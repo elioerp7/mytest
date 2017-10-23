@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using mytest.Models;
 
 namespace mytest
 {
@@ -18,7 +21,21 @@ namespace mytest
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
+                try
+                {
+                    // Requires using MvcMovie.Models;
+                    SeedData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError("An error occurred seeding the DB.");
+                }
+            }
             host.Run();
         }
     }
