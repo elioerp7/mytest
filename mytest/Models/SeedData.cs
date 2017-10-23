@@ -33,7 +33,7 @@ namespace mytest.Models
                          ISBN = "978-0062315007",
                          Title = "The Alchemist",
                          Price = 34.99,
-                         Description = "Description1",
+                         Description = "http://www.productontology.org/id/The_Alchemist_(novel)",
                          Author = "Paulo Coelho",
                          Genre = "Adventure",
                          Publisher = "HarperOne",
@@ -144,6 +144,45 @@ namespace mytest.Models
                          Publisher = "Bantam",
                          Quantity = 3,
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51KzcuZMlzL._SY344_BO1,204,203,200_.jpg",
+                         IsFeatured = 1
+                     },
+                     new Book
+                     {
+                         ISBN = "978-1455582877",
+                         Title = "The Notebook",
+                         Price = 20.50,
+                         Description = "Description9",
+                         Author = "Nicholas Sparks",
+                         Genre = "Romance",
+                         Publisher = "Grand Central Publishing",
+                         Quantity = 30,
+                         Image = "http://www.gstatic.com/tv/thumb/movieposters/33410/p33410_p_v8_aa.jpg",
+                         IsFeatured = 1
+                     },
+                     new Book
+                     {
+                         ISBN = "978-1508480563",
+                         Title = "Heidi",
+                         Price = 5.99,
+                         Description = "Description10",
+                         Author = "Johanna Spyri",
+                         Genre = "Adventure",
+                         Publisher = "NorthSouth",
+                         Quantity = 20,
+                         Image = "https://images-na.ssl-images-amazon.com/images/I/51pTZX8xQ%2BL.jpg",
+                         IsFeatured = 1
+                     },
+                     new Book
+                     {
+                         ISBN = "978-1537782034",
+                         Title = "Witch Hunter: An Urban Fantasy Novel",
+                         Price = 14.99,
+                         Description = "Description11",
+                         Author = "C. N. Crawfors",
+                         Genre = "Fantasy",
+                         Publisher = "CreateSpace Independent Publishing Platform",
+                         Quantity = 20,
+                         Image = "https://images-na.ssl-images-amazon.com/images/I/51gdbBo8KNL._SX311_BO1,204,203,200_.jpg",
                          IsFeatured = 1
                      }
                 );
