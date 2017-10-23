@@ -149,5 +149,38 @@ namespace mytest.Controllers
         {
             return _context.Books.Any(e => e.ISBN == id);
         }
+        [HttpGet]
+        public IActionResult ViewBooks(String search)
+        {
+            if (search == null)
+                return View(_context.Books.ToList());
+            else
+            {
+                return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
+                                                             x.Author.ToLower().Contains(search.ToLower()) ||
+                                                             x.Genre.ToLower().Contains(search.ToLower()) ||
+                                                             x.ISBN.Contains(search) ||
+                                                             x.Publisher.ToLower().Contains(search.ToLower()) ||
+                                                             search == null).ToList());
+            }
+        }
+        public IActionResult ShowBook(string field)
+        {
+            if (field == null)
+                return View();
+            else
+            {
+                return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
+            }
+        }
+        public IActionResult ShowAuthor(string field)
+        {
+            if (field == null)
+                return View();
+            else
+            {
+                return View(_context.Books.Where(x => x.Author.ToLower().Equals(field.ToLower()) || field == null).ToList());
+            }
+        }
     }
 }
