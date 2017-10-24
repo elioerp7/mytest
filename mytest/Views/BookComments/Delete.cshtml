@@ -1,0 +1,47 @@
+@model mytest.Models.BookComment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BookComment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="CommentId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ThisDateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThisDateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookISBN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookISBN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

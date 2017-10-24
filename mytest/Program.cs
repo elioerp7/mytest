@@ -31,7 +31,7 @@ namespace mytest
                     // Requires using MvcMovie.Models;
                     SeedData.Initialize(services);
                 }
-                catch (Exception ex)
+                catch
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError("An error occurred seeding the DB.");

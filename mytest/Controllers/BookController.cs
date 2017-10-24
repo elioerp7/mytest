@@ -28,7 +28,7 @@ namespace mytest.Controllers
         // GET: Book/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id.Equals(null))
+            if (id == null)
             {
                 return NotFound();
             }
@@ -68,7 +68,7 @@ namespace mytest.Controllers
         // GET: Book/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id.Equals(null))
+            if (id == null)
             {
                 return NotFound();
             }
@@ -119,7 +119,7 @@ namespace mytest.Controllers
         // GET: Book/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id.Equals(null))
+            if (id == null)
             {
                 return NotFound();
             }
@@ -170,6 +170,25 @@ namespace mytest.Controllers
                 return View();
             else
             {
+                ViewBag.BookISBN = field;
+                var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
+                ViewBag.Comments = comments;
+
+                var ratings = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
+                
+                if (ratings.Count() > 0)
+                {
+                    var ratingSum = ratings.Sum(d => d.Rating.Value);
+                    ViewBag.RatingSum = ratingSum;
+                    var ratingCount = ratings.Count();
+                    ViewBag.RatingCount = ratingCount;
+                }
+                else
+                {
+                    ViewBag.RatingSum = 0;
+                    ViewBag.RatingCount = 0;
+                }
+
                 return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
             }
         }
