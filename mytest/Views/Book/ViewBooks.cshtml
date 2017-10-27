@@ -4,7 +4,21 @@
     ViewData["Title"] = "ViewBooks";
 }
 
-<br />
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            <div class="form-group">
+                <br />
+                @using (Html.BeginForm("ViewBooks", "Book", FormMethod.Get))
+                {
+                    @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Book Name, Author or ISBN" })
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <br />
 
 @if (Model.Count() == 0)
@@ -25,11 +39,12 @@
                     <div class="thumbnail hvr-grow">
                         <img src="@item.Image" style="height:250px; width:250px">
                         <div class="caption">
-                            <h5>@item.Title</h5>
-                            <h6>
+                            <h7>@item.Title</h7>
+                            <br/>
+                            <h7>
                                  <a href="ShowAuthor?field=@item.Author">@item.Author</a>
                                 <br />$@item.Price
-                            </h6>
+                            </h7>
                             <p><a href="#" class="btn btn-primary" role="button">Add To Cart</a></p>
                         </div>
                     </div>
