@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mytest.Data;
 using mytest.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
@@ -117,6 +116,7 @@ namespace mytest.Controllers
         }
 
         // GET: Book/Delete/5
+        
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -145,11 +145,14 @@ namespace mytest.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         private bool BookExists(string id)
         {
             return _context.Books.Any(e => e.ISBN == id);
         }
+
         [HttpGet]
+        [Authorize]
         public IActionResult ViewBooks(String search)
         {
             if (search == null)
@@ -192,6 +195,8 @@ namespace mytest.Controllers
                 return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
             }
         }
+
+        [Authorize]
         public IActionResult ShowAuthor(string field)
         {
             if (field == null)

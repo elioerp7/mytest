@@ -1,13 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mytest.Data;
 using mytest.Models;
-using Microsoft.AspNetCore.Http;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
@@ -87,6 +86,7 @@ namespace mytest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("CommentId,Comments,ThisDateTime,BookISBN,Rating")] BookComment bookComment)
         {
             if (id != bookComment.CommentId)
@@ -118,6 +118,7 @@ namespace mytest.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Add(IFormCollection form)
         {
             var comment = form["Comment"].ToString();
