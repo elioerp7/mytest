@@ -29,7 +29,7 @@ namespace mytest.Controllers
             
 
             if (search == null)
-                return View(_context.Books.ToList());
+                return View(_context.Books.ToList().OrderBy(x => x.Title));
             else
             {
                 return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
@@ -37,7 +37,7 @@ namespace mytest.Controllers
                                                              x.Genre.ToLower().Contains(search.ToLower()) ||
                                                              x.ISBN.Contains(search) ||
                                                              x.Publisher.ToLower().Contains(search.ToLower()) ||
-                                                             search == null).ToList());
+                                                             search == null).ToList().OrderBy(x => x.Title));
             }
         }
 
