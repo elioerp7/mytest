@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using mytest.Data;
+using System.Linq;
 
 namespace mytest.Controllers
 {
@@ -16,11 +14,21 @@ namespace mytest.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public IActionResult Index(string search)
         {
-            return View(_context.Books.ToList());
+            if (search == null)
+                return View(_context.Books.ToList());
+            else
+            {
+                return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
+                                                             x.Author.ToLower().Contains(search.ToLower()) ||
+                                                             x.Genre.ToLower().Contains(search.ToLower()) ||
+                                                             x.ISBN.Contains(search) ||
+                                                             x.Publisher.ToLower().Contains(search.ToLower()) ||
+                                                             search == null).ToList());
+            }
         }
-
 
 
         public IActionResult About()
@@ -41,6 +49,8 @@ namespace mytest.Controllers
         {
             return View();
         }
+
+        [Authorize]
         public IActionResult ShowBook(string field)
         {
             if (field == null)
@@ -69,6 +79,7 @@ namespace mytest.Controllers
                 return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
             }
         }
+        [Authorize]
         public IActionResult ShowAuthor(string field)
         {
             if (field == null)

@@ -1,10 +1,8 @@
-﻿using mytest.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using mytest.Data;
+using System;
+using System.Linq;
 
 namespace mytest.Models
 {
@@ -18,7 +16,7 @@ namespace mytest.Models
                 // Look for any Books.
                 if (context.Books.Any())
                 {
-                    //return;   // DB has been seeded
+                    return;   // DB has been seeded
                 }
                 foreach (Book b in context.Books)
                 {
