@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using mytest.Data;
+using System;
 using System.Linq;
 
 namespace mytest.Controllers
@@ -8,6 +9,7 @@ namespace mytest.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        //private readonly string sortOrder;
 
         public HomeController(ApplicationDbContext context)
         {
@@ -15,8 +17,17 @@ namespace mytest.Controllers
         }
 
         [Authorize]
-        public IActionResult Index(string search)
+        public IActionResult Index(string sort, string search)
         {
+            ViewBag.AuthorSort = String.IsNullOrEmpty(sort) ? "Author" : "";
+            
+            switch (sort)
+            {
+                case "Author":
+                    return View(_context.Books.OrderBy(x => x.Author));
+            }
+            
+
             if (search == null)
                 return View(_context.Books.ToList());
             else
@@ -30,17 +41,9 @@ namespace mytest.Controllers
             }
         }
 
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Team 5";
 
             return View();
         }
