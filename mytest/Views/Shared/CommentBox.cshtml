@@ -24,15 +24,22 @@
                             <textarea name="Comment" id="Comment" required rows="5" style="width:940px;" class="form-control"></textarea>
                         </div>
                     </div>
+                    
+                    
                     <div class="form-group">
                         <div class="col-md-12">
+                            <input type="checkbox" name="Anonymous" value="Checked"> Comment as Anonymous<br>
                             <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
                             <input type="hidden" name="Rating" id="Rating" value="0" />
+                            <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
+                            <br />
                             <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" />
                         </div>
                     </div>
+
                 </div>
             }
+
         </div>
     </dd>
 

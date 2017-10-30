@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mytest.Data;
@@ -7,15 +8,22 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace mytest.Controllers
 {
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<ApplicationUser> _userManager;
 
-        public BookController(ApplicationDbContext context)
+
+        public BookController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;    
+            _context = context;
+            _userManager = userManager;
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+
+
         }
 
         // GET: Book
@@ -174,6 +182,7 @@ namespace mytest.Controllers
             else
             {
                 ViewBag.BookISBN = field;
+                ViewBag.UserId = _userManager.GetUserId(User);
                 var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 ViewBag.Comments = comments;
 

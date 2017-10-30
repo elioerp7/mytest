@@ -124,19 +124,25 @@ namespace mytest.Controllers
             var comment = form["Comment"].ToString();
             var bookISBN = form["bookISBN"].ToString();
             var rating = int.Parse(form["Rating"]);
+            string userId;
+            if (form["Anonymous"].ToString() == "Checked")
+                userId = null;
+            else
+                userId = form["UserId"].ToString();
 
             BookComment artComment = new BookComment()
             {
                 BookISBN = bookISBN,
                 Comments = comment,
                 Rating = rating,
-                ThisDateTime = DateTime.Now
+                ThisDateTime = DateTime.Now,
+                UserId = userId
             };
 
             _context.Comments.Add(artComment);
             _context.SaveChanges();
 
-            return RedirectToAction("ShowBook", "Book", new { field = bookISBN.ToString() });
+            return RedirectToAction("ShowBook", "Home", new { field = bookISBN.ToString() });
         }
         // GET: BookComments/Delete/5
         public async Task<IActionResult> Delete(int? id)

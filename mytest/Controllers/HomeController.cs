@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mytest.Data;
+using mytest.Models;
 using System;
 using System.Linq;
 
@@ -9,11 +11,14 @@ namespace mytest.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<ApplicationUser> _userManager;
         //private readonly string sortOrder;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
         }
 
         [Authorize]
@@ -63,6 +68,8 @@ namespace mytest.Controllers
                 ViewBag.BookISBN = field;
                 var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 ViewBag.Comments = comments;
+                ViewBag.UserId = _userManager.GetUserName(User);
+
 
                 var ratings = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
 
