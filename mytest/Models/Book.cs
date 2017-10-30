@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace mytest.Models
 {
@@ -30,5 +31,8 @@ namespace mytest.Models
 
         public int IsFeatured { get; set; }
 
+        public DateTime ReleaseDate { get; set; }
+
+        public int Rating { get; set; }
     }
 }

@@ -105,7 +105,8 @@
              { 
             <div>By @c.UserId</div>
              }
-            <i>on @c.ThisDateTime</i>
+            <i>on @String.Format("{0:F}", @c.ThisDateTime)</i>
+            
          </div>
         <div class="col-md-9">
             @Html.Raw(c.Comments.Replace("\n", "<br />"))
