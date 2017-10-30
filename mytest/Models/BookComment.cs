@@ -10,6 +10,7 @@ namespace mytest.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentId { get; set; }
 
+        [MaxLength(150)]
         public string Comments { get; set; }
 
         public DateTime? ThisDateTime { get; set; }
