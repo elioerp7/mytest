@@ -54,7 +54,7 @@ namespace mytest
 
             services.AddMvc();
             services.AddMemoryCache();
-            services.AddSession();
+            //services.AddSession();
 
 
             // Add application services.
