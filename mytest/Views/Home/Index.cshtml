@@ -28,9 +28,12 @@
     <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Sort by <span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
         <li>@Html.ActionLink("Author", "Index", new { sort = ViewBag.AuthorSort })</li>
-        <li>@Html.ActionLink("Genre", "Index", new { sort = ViewBag.GenreSort })</li>
         <li>@Html.ActionLink("Title", "Index", new { sort = ViewBag.TitleSort })</li>
-        <li>@Html.ActionLink("Price", "Index", new { sort = ViewBag.PriceSort })</li>
+        <li>@Html.ActionLink("Price (Low to High)", "Index", new { sort = ViewBag.PriceSort })</li>
+        <li>@Html.ActionLink("Price (High to Low)", "Index", new { sort = ViewBag.PriceSort })</li>
+        <li>@Html.ActionLink("Release Date", "Index", new { sort = ViewBag.ReleaseSort })</li>
+        <li>@Html.ActionLink("Release Date (Most Recent)", "Index", new { sort = ViewBag.ReleaseSort })</li>
+
     </ul>
 </li>
 

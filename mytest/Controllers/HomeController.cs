@@ -25,21 +25,26 @@ namespace mytest.Controllers
         public IActionResult Index(string sort, string search)
         {
             ViewBag.AuthorSort = String.IsNullOrEmpty(sort) ? "Author" : "";
-            ViewBag.GenreSort = String.IsNullOrEmpty(sort) ? "Genre" : "";
             ViewBag.TitleSort = String.IsNullOrEmpty(sort) ? "Title" : "";
-            ViewBag.PriceSort = String.IsNullOrEmpty(sort) ? "Price" : "";
+            ViewBag.PriceSort = String.IsNullOrEmpty(sort) ? "Price (High to Low)" : "Price (Low to High)";
+            ViewBag.ReleaseSort = String.IsNullOrEmpty(sort) ? "Release Date" : "Release Date (Most Recent)";
+
 
             switch (sort)
             {
                 case "Author":
                     return View(_context.Books.OrderBy(x => x.Author));
-                case "Genre":
-                    return View(_context.Books.OrderBy(x => x.Genre));
                 case "Title":
                     return View(_context.Books.OrderBy(x => x.Title));
-                case "Price":
+                case "Price (Low to High)":
+                    return View(_context.Books.OrderByDescending(x => x.Price));
+                case "Price (High to Low)":
                     return View(_context.Books.OrderBy(x => x.Price));
-                
+                case "Release Date":
+                    return View(_context.Books.OrderByDescending(x => x.ReleaseDate));
+                case "Release Date (Most Recent)": 
+                    return View(_context.Books.OrderBy(x => x.ReleaseDate));
+
             }
 
             
