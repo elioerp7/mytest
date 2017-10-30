@@ -24,6 +24,9 @@
 
     </div>
 </div>
+<div>
+    @Html.ActionLink("Sort by Author", "Index", new { sort = ViewBag.AuthorSort })
+</div>
 
 <br />
 
@@ -50,7 +53,6 @@
                                 <a href="../Home/ShowAuthor?field=@item.Author">@item.Author</a>
                                 <br />$@item.Price
                             </h6>
-                            <p><a href="#" class="btn btn-primary" role="button">Add To Cart</a></p>
                         </div>
                     </div>
                 </a>
