@@ -24,9 +24,16 @@
 
     </div>
 </div>
-<div>
-    @Html.ActionLink("Sort by Author", "Index", new { sort = ViewBag.AuthorSort })
-</div>
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Sort by <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+        <li>@Html.ActionLink("Author", "Index", new { sort = ViewBag.AuthorSort })</li>
+        <li>@Html.ActionLink("Genre", "Index", new { sort = ViewBag.GenreSort })</li>
+        <li>@Html.ActionLink("Title", "Index", new { sort = ViewBag.TitleSort })</li>
+        <li>@Html.ActionLink("Price", "Index", new { sort = ViewBag.PriceSort })</li>
+    </ul>
+</li>
+
 
 <br />
 
@@ -61,3 +68,4 @@
 
             }
 </div>
+   
