@@ -44,8 +44,10 @@ namespace mytest.Models
                          Publisher = "HarperOne",
                          Quantity = 60,
                          Image = "http://t2.gstatic.com/images?q=tbn:ANd9GcTAyMeaePHdaWi1UppB8qvu2GtO4jfpufEsS3cR8Sp9Is-x3KXb",
-                         IsFeatured = 1
-                         
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("05/01/1993"),
+                         Rating = 0
+
                      },
                      new Book
                      {
@@ -66,7 +68,9 @@ namespace mytest.Models
                          Publisher = "Mariner Books",
                          Quantity = 70,
                          Image = "https://books.google.com/books/content/images/frontcover/NhTyjt0V9tsC?fife=w300-rw",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("04/06/1943"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -86,30 +90,38 @@ namespace mytest.Models
                          Publisher = "Vintage Crime / Black Lizard",
                          Quantity = 3,
                          Image = "http://t0.gstatic.com/images?q=tbn:ANd9GcT3C9lPaq1RPyrr12irhuZewsNZUX1aXxvU0Llyoc7n3zDqN1Rj",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("08/01/2005"),
+                         Rating = 0
                      },
                      new Book
                      {
                          ISBN = "978-0349409740",
                          Title = "A Scot in the Dark",
                          Price = 10.14,
-                         Description = "Description4",
+                         Description = "Miss Lillian Hargrove has lived much of her life alone in a gilded cage, " +
+                         "longing for love and companionship. When an artist offers her pretty promises and begs" +
+                         " her to pose for a scandalous portrait, Lily doesn’t hesitate . . . until the lying libertine leaves her in disgrace. With the painting now public, Lily has no choice but to turn to the one man who might save her from ruin.",
                          Author = "Sarah MacLean",
                          Genre = "Romance",
                          Publisher = "PIATKUS BOOKS",
                          Quantity = 26,
                          Image = "https://images.gr-assets.com/books/1504741514l/27067875.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("08/30/2016"),
+                         Rating = 0
                      },
                      new Book
                      {
                          ISBN = "978-0439708180",
                          Title = "Harry Potter and the Sorcerer''s Stone",
                          Price = 7.99,
-                         Description = "Harry Potter has never been the star of a Quidditch team, scoring points while riding a broom far above the ground. He knows no spells, has never helped to hatch a dragon, and has never worn a cloak of invisibility. " +
+                         Description = "Harry Potter has never been the star of a Quidditch team, scoring points while riding a broom far" +
+                         " above the ground. He knows no spells, has never helped to hatch a dragon, and has never worn a cloak of invisibility. " +
                          "All he knows is a miserable life with the Dursleys, his horrible aunt and uncle, and their abominable son, " +
                          "Dudley — a great big swollen spoiled bully.Harry’s room is a tiny closet at the foot of the stairs, " +
-                         "and he hasn’t had a birthday party in eleven years. But all that is about to change when a mysterious letter arrives by owl messenger: a letter with an invitation to an incredible place that Harry — and anyone who reads about him — will find unforgettable. " +
+                         "and he hasn’t had a birthday party in eleven years. But all that is about to change when a mysterious letter arrives " +
+                         "by owl messenger: a letter with an invitation to an incredible place that Harry — and anyone who reads about him — will find unforgettable. " +
                          "For it’s there that he finds not only friends, aerial sports, and magic in everything from classes to meals, " +
                          "but a great destiny that’s been waiting for him… if Harry can survive the encounter.",
                          Author = "J. K. Rowling",
@@ -117,7 +129,9 @@ namespace mytest.Models
                          Publisher = "Pottermore",
                          Quantity = 20,
                          Image = "http://t0.gstatic.com/images?q=tbn:ANd9GcTltzcooPkGcy1fKKqzSuO8U6S9XBpNDR9MuYc9SS_L5AbAn66O",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("06/26/1997"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -134,7 +148,9 @@ namespace mytest.Models
                          Publisher = "Mariner Books",
                          Quantity = 70,
                          Image = "http://www.gstatic.com/tv/thumb/movieposters/33156/p33156_p_v8_aa.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("10/20/1955"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -152,7 +168,9 @@ namespace mytest.Models
                          Publisher = "Mariner Books",
                          Quantity = 15,
                          Image = "https://images-na.ssl-images-amazon.com/images/I/4123zOAwAgL._SY346_.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("11/11/1954"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -169,7 +187,9 @@ namespace mytest.Models
                          Publisher = "Mariner Books",
                          Quantity = 35,
                          Image = "https://prodimage.images-bn.com/pimages/9780547928210_p0_v2_s550x406.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("07/29/1954"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -185,7 +205,9 @@ namespace mytest.Models
                          Publisher = "Bantam",
                          Quantity = 3,
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51KzcuZMlzL._SY344_BO1,204,203,200_.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("08/01/1996"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -204,7 +226,9 @@ namespace mytest.Models
                          Publisher = "Grand Central Publishing",
                          Quantity = 30,
                          Image = "http://www.gstatic.com/tv/thumb/movieposters/33410/p33410_p_v8_aa.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("10/01/1996"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -222,7 +246,9 @@ namespace mytest.Models
                          Publisher = "NorthSouth",
                          Quantity = 20,
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51pTZX8xQ%2BL.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("01/01/1981"),
+                         Rating = 0
                      },
                      new Book
                      {
@@ -239,7 +265,9 @@ namespace mytest.Models
                          Publisher = "CreateSpace Independent Publishing Platform",
                          Quantity = 20,
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51gdbBo8KNL._SX311_BO1,204,203,200_.jpg",
-                         IsFeatured = 1
+                         IsFeatured = 1,
+                         ReleaseDate = DateTime.Parse("03/07/2017"),
+                         Rating = 0
                      }
                 );
 

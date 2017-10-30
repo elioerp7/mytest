@@ -31,7 +31,7 @@ namespace mytest.Models
 
         public int IsFeatured { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         public int Rating { get; set; }
     }
