@@ -43,9 +43,9 @@
     {
         foreach (var item in Model)
         {
-            <div class="col-lg-5 col-md-5 col-sm-4 col-xs-5">
+            <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
                 <div class="thumbnail hvr-curl-top-right">
-                    <img src="@item.Image" style="height:450px; width:350px; border">
+                    <img src="@item.Image" style="height:450px; width:300px">
 
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div>
                     <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
                     (@ratingCount Reviews)
-                    <i style="padding-left:7em "><a href="ShoppingCartRequest?field=@item.Title" class="btn btn-primary" role="button">Add To Cart</a></i>
+                    <i style="padding-left:7em"><a href="ShoppingCartRequest?field=@item.Title" class="btn btn-primary" role="button">Add To Cart</a></i>
 
                 </div>
 
