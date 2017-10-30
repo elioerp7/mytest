@@ -17,5 +17,7 @@ namespace mytest.Models
         public string BookISBN { get; set; }
 
         public int? Rating { get; set; }
+
+        public string UserId { get; set; }
     }
 }
