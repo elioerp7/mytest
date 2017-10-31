@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using mytest.Data;
 using mytest.Models;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
@@ -22,44 +24,76 @@ namespace mytest.Controllers
         }
 
         [Authorize]
-        public IActionResult Index(string sort, string search)
+        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? page, string pageSize)
         {
-            ViewBag.AuthorSort = String.IsNullOrEmpty(sort) ? "Author" : "";
-            ViewBag.TitleSort = String.IsNullOrEmpty(sort) ? "Title" : "";
-            ViewBag.PriceSort = String.IsNullOrEmpty(sort) ? "Price (High to Low)" : "Price (Low to High)";
-            ViewBag.ReleaseSort = String.IsNullOrEmpty(sort) ? "Release Date" : "Release Date (Most Recent)";
+            ViewData["CurrentSort"] = sort;
+            ViewData["AuthorSort"] = sort==  "Author"?  "" : "Author";
+            ViewData["TitleSort"] = sort == "Title"  ?  "" : "Title";
+            ViewData["PriceSort"] = sort == "Price (High to Low)" ? "Price (Low to High)" : "Price (High to Low)";
+            ViewData["ReleaseSort"] = sort ==  "Release Date" ? "Release Date (Most Recent)" : "Release Date";
+            ViewData["PageSize"] = pageSize == "10" ? "20" : "10";
 
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = search;
+
+            var books = from x in _context.Books select x;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                books = _context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
+                                                             x.Author.ToLower().Contains(search.ToLower()) ||
+                                                             x.Genre.ToLower().Contains(search.ToLower()) ||
+                                                             x.ISBN.Contains(search) ||
+                                                             x.Publisher.ToLower().Contains(search.ToLower()) );
+            }
 
             switch (sort)
             {
                 case "Author":
-                    return View(_context.Books.OrderBy(x => x.Author));
+                    books = (_context.Books.OrderBy(x => x.Author));
+                    break;
                 case "Title":
-                    return View(_context.Books.OrderBy(x => x.Title));
+                    books = (_context.Books.OrderBy(x => x.Title));
+                    break;
                 case "Price (Low to High)":
-                    return View(_context.Books.OrderByDescending(x => x.Price));
+                    books = (_context.Books.OrderByDescending(x => x.Price));
+                    break;
                 case "Price (High to Low)":
-                    return View(_context.Books.OrderBy(x => x.Price));
+                    books = (_context.Books.OrderBy(x => x.Price));
+                    break;
                 case "Release Date":
-                    return View(_context.Books.OrderByDescending(x => x.ReleaseDate));
+                    books = (_context.Books.OrderBy(x => x.ReleaseDate));
+                    break;
                 case "Release Date (Most Recent)": 
-                    return View(_context.Books.OrderBy(x => x.ReleaseDate));
+                    books = (_context.Books.OrderByDescending(x => x.ReleaseDate));
+                    break;
+                default:
+                    books = books.OrderBy(x => x.Title);
+                    break;
 
             }
-
-            
-
-            if (search == null)
-                return View(_context.Books.ToList().OrderBy(x => x.Title));
-            else
+            int sizePage = 12;
+            switch (pageSize)
             {
-                return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
-                                                             x.Author.ToLower().Contains(search.ToLower()) ||
-                                                             x.Genre.ToLower().Contains(search.ToLower()) ||
-                                                             x.ISBN.Contains(search) ||
-                                                             x.Publisher.ToLower().Contains(search.ToLower()) ||
-                                                             search == null).ToList().OrderBy(x => x.Title));
+                case "10":
+                    sizePage = 10;
+                    break;
+                case "20":
+                    sizePage = 20;
+                    break;
+
             }
+            
+            return View(await GeekTextBooks.PaginatedList<Book>.CreateAsync(books.AsNoTracking(), page ?? 1, sizePage));
+
         }
 
         public IActionResult Contact()
