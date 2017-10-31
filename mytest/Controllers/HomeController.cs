@@ -31,7 +31,8 @@ namespace mytest.Controllers
             ViewData["TitleSort"] = sort == "Title"  ?  "" : "Title";
             ViewData["PriceSort"] = sort == "Price (High to Low)" ? "Price (Low to High)" : "Price (High to Low)";
             ViewData["ReleaseSort"] = sort ==  "Release Date" ? "Release Date (Most Recent)" : "Release Date";
-            ViewData["PageSize"] = pageSize == "10" ? "20" : "10";
+            ViewData["PageSize10"] = pageSize == "10" ? "" : "10";
+            ViewData["PageSize20"] = pageSize == "20" ? "" : "20";
 
             if (search != null)
             {
