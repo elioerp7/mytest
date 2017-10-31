@@ -80,17 +80,11 @@ namespace mytest.Controllers
                     break;
 
             }
-            int sizePage = 12;
-            switch (pageSize)
-            {
-                case "10":
-                    sizePage = 10;
-                    break;
-                case "20":
-                    sizePage = 20;
-                    break;
+            int sizePage = 0;
+            Int32.TryParse(pageSize, out sizePage);
 
-            }
+            if (sizePage == 0)
+                sizePage = 10; 
             
             return View(await GeekTextBooks.PaginatedList<Book>.CreateAsync(books.AsNoTracking(), page ?? 1, sizePage));
 
