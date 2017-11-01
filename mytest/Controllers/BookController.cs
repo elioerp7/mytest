@@ -159,61 +159,61 @@ namespace mytest.Controllers
             return _context.Books.Any(e => e.ISBN == id);
         }
 
-        [HttpGet]
-        [Authorize]
-        public IActionResult ViewBooks(String search)
-        {
-            if (search == null)
-                return View(_context.Books.ToList());
-            else
-            {
-                return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
-                                                             x.Author.ToLower().Contains(search.ToLower()) ||
-                                                             x.Genre.ToLower().Contains(search.ToLower()) ||
-                                                             x.ISBN.Contains(search) ||
-                                                             x.Publisher.ToLower().Contains(search.ToLower()) ||
-                                                             search == null).ToList());
-            }
-        }
-        public IActionResult ShowBook(string field)
-        {
-            if (field == null)
-                return View();
-            else
-            {
-                ViewBag.BookISBN = field;
-                ViewBag.UserId = _userManager.GetUserId(User);
-                var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
-                ViewBag.Comments = comments;
+        //[HttpGet]
+        //[Authorize]
+        //public IActionResult ViewBooks(String search)
+        //{
+        //    if (search == null)
+        //        return View(_context.Books.ToList());
+        //    else
+        //    {
+        //        return View(_context.Books.Where(x => x.Title.ToLower().Contains(search.ToLower()) ||
+        //                                                     x.Author.ToLower().Contains(search.ToLower()) ||
+        //                                                     x.Genre.ToLower().Contains(search.ToLower()) ||
+        //                                                     x.ISBN.Contains(search) ||
+        //                                                     x.Publisher.ToLower().Contains(search.ToLower()) ||
+        //                                                     search == null).ToList());
+        //    }
+        //}
+        //public IActionResult ShowBook(string field)
+        //{
+        //    if (field == null)
+        //        return View();
+        //    else
+        //    {
+        //        ViewBag.BookISBN = field;
+        //        ViewBag.UserId = _userManager.GetUserId(User);
+        //        var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
+        //        ViewBag.Comments = comments;
 
-                var ratings = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
+        //        var ratings = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 
-                if (ratings.Count() > 0)
-                {
-                    var ratingSum = ratings.Sum(d => d.Rating.Value);
-                    ViewBag.RatingSum = ratingSum;
-                    var ratingCount = ratings.Count();
-                    ViewBag.RatingCount = ratingCount;
-                }
-                else
-                {
-                    ViewBag.RatingSum = 0;
-                    ViewBag.RatingCount = 0;
-                }
+        //        if (ratings.Count() > 0)
+        //        {
+        //            var ratingSum = ratings.Sum(d => d.Rating.Value);
+        //            ViewBag.RatingSum = ratingSum;
+        //            var ratingCount = ratings.Count();
+        //            ViewBag.RatingCount = ratingCount;
+        //        }
+        //        else
+        //        {
+        //            ViewBag.RatingSum = 0;
+        //            ViewBag.RatingCount = 0;
+        //        }
 
-                return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
-            }
-        }
+        //        return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
+        //    }
+        //}
 
-        [Authorize]
-        public IActionResult ShowAuthor(string field)
-        {
-            if (field == null)
-                return View();
-            else
-            {
-                return View(_context.Books.Where(x => x.Author.ToLower().Equals(field.ToLower()) || field == null).ToList());
-            }
-        }
+        //[Authorize]
+        //public IActionResult ShowAuthor(string field)
+        //{
+        //    if (field == null)
+        //        return View();
+        //    else
+        //    {
+        //        return View(_context.Books.Where(x => x.Author.ToLower().Equals(field.ToLower()) || field == null).ToList());
+        //    }
+        //}
     }
 }

@@ -1,0 +1,65 @@
+@model mytest.Models.Author
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="AuthorId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofDeath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateofDeath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthCountry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthCountry)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthCity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

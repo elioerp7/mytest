@@ -141,7 +141,7 @@ namespace mytest.Controllers
                 return View();
             else
             {
-                return View(_context.Books.Where(x => x.Author.ToLower().Equals(field.ToLower()) || field == null).ToList());
+                return View(_context.Authors.Where(x => x.Name.ToLower().Equals(field.ToLower()) || field == null).ToList());
             }
         }
     }

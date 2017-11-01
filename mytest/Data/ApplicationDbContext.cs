@@ -9,6 +9,7 @@ namespace mytest.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<BookComment> Comments { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Author> Authors { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
