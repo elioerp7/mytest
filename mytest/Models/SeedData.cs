@@ -46,7 +46,8 @@ namespace mytest.Models
                          Image = "http://t2.gstatic.com/images?q=tbn:ANd9GcTAyMeaePHdaWi1UppB8qvu2GtO4jfpufEsS3cR8Sp9Is-x3KXb",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("05/01/1993"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 10
 
                      },
                      new Book
@@ -70,7 +71,8 @@ namespace mytest.Models
                          Image = "https://books.google.com/books/content/images/frontcover/NhTyjt0V9tsC?fife=w300-rw",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("04/06/1943"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 11
                      },
                      new Book
                      {
@@ -92,7 +94,9 @@ namespace mytest.Models
                          Image = "http://t0.gstatic.com/images?q=tbn:ANd9GcT3C9lPaq1RPyrr12irhuZewsNZUX1aXxvU0Llyoc7n3zDqN1Rj",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/01/2005"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 10
+
                      },
                      new Book
                      {
@@ -109,7 +113,8 @@ namespace mytest.Models
                          Image = "https://images.gr-assets.com/books/1504741514l/27067875.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/30/2016"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 5
                      },
                      new Book
                      {
@@ -131,7 +136,8 @@ namespace mytest.Models
                          Image = "http://t0.gstatic.com/images?q=tbn:ANd9GcTltzcooPkGcy1fKKqzSuO8U6S9XBpNDR9MuYc9SS_L5AbAn66O",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("06/26/1997"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 12
                      },
                      new Book
                      {
@@ -150,7 +156,8 @@ namespace mytest.Models
                          Image = "http://www.gstatic.com/tv/thumb/movieposters/33156/p33156_p_v8_aa.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/20/1955"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 13
                      },
                      new Book
                      {
@@ -170,7 +177,8 @@ namespace mytest.Models
                          Image = "https://images-na.ssl-images-amazon.com/images/I/4123zOAwAgL._SY346_.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("11/11/1954"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 16
                      },
                      new Book
                      {
@@ -189,7 +197,8 @@ namespace mytest.Models
                          Image = "https://prodimage.images-bn.com/pimages/9780547928210_p0_v2_s550x406.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("07/29/1954"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 19
                      },
                      new Book
                      {
@@ -207,7 +216,8 @@ namespace mytest.Models
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51KzcuZMlzL._SY344_BO1,204,203,200_.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/01/1996"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 20
                      },
                      new Book
                      {
@@ -228,7 +238,8 @@ namespace mytest.Models
                          Image = "http://www.gstatic.com/tv/thumb/movieposters/33410/p33410_p_v8_aa.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/01/1996"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 29
                      },
                      new Book
                      {
@@ -248,7 +259,8 @@ namespace mytest.Models
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51pTZX8xQ%2BL.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("01/01/1981"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 100
                      },
                      new Book
                      {
@@ -267,7 +279,8 @@ namespace mytest.Models
                          Image = "https://images-na.ssl-images-amazon.com/images/I/51gdbBo8KNL._SX311_BO1,204,203,200_.jpg",
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("03/07/2017"),
-                         Rating = 0
+                         Rating = 0,
+                         Sold = 8
                      }
                 );
 

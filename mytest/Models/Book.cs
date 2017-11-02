@@ -34,5 +34,8 @@ namespace mytest.Models
         public DateTime? ReleaseDate { get; set; }
 
         public int Rating { get; set; }
+
+        [MinLength(0)]
+        public int Sold { get; set; }
     }
 }
