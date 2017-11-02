@@ -139,6 +139,19 @@ namespace mytest.Controllers
                 UserId = userId
             };
 
+            var ratings = _context.Comments.Where(d => d.BookISBN.Equals(bookISBN)).ToList();
+            int ratingSum;
+            int ratingCount;
+            ratingSum = ratings.Sum(d => d.Rating.Value) + rating;
+            ratingCount = ratings.Count()+1;
+
+            var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
+            book.Rating = ratingSum/ratingCount;
+
+
+            _context.Entry(book).State = EntityState.Modified;
+            _context.SaveChanges();
+
             _context.Comments.Add(artComment);
             _context.SaveChanges();
 
