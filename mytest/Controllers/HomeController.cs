@@ -33,6 +33,9 @@ namespace mytest.Controllers
             ViewData["ReleaseSort"] = sort ==  "Release Date" ? "Release Date (Most Recent)" : "Release Date";
             ViewData["PageSize10"] = pageSize == "10" ? "" : "10";
             ViewData["PageSize20"] = pageSize == "20" ? "" : "20";
+            ViewData["TopSort"] = sort == "Top Sellers" ? "" : "Top Sellers";
+            ViewData["BestSort"] = sort == "Best Rated" ? "" : "Best Rated";
+
 
             if (search != null)
             {
@@ -75,6 +78,12 @@ namespace mytest.Controllers
                     break;
                 case "Release Date (Most Recent)": 
                     books = (_context.Books.OrderByDescending(x => x.ReleaseDate));
+                    break;
+                case "Top Sellers":
+                    books = (_context.Books.OrderByDescending(x => x.Sold));
+                    break;
+                case "Best Rated":
+                    books = (_context.Books.OrderByDescending(x => x.Rating));
                     break;
                 default:
                     books = books.OrderBy(x => x.Title);
