@@ -27,14 +27,16 @@ namespace mytest.Controllers
         public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? page, string pageSize)
         {
             ViewData["CurrentSort"] = sort;
-            ViewData["AuthorSort"] = sort==  "Author"?  "" : "Author";
-            ViewData["TitleSort"] = sort == "Title"  ?  "" : "Title";
-            ViewData["PriceSort"] = sort == "Price (High to Low)" ? "Price (Low to High)" : "Price (High to Low)";
-            ViewData["ReleaseSort"] = sort ==  "Release Date" ? "Release Date (Most Recent)" : "Release Date";
-            ViewData["PageSize10"] = pageSize == "10" ? "" : "10";
-            ViewData["PageSize20"] = pageSize == "20" ? "" : "20";
-            ViewData["TopSort"] = sort == "Top Sellers" ? "" : "Top Sellers";
-            ViewData["BestSort"] = sort == "Best Rated" ? "" : "Best Rated";
+            ViewData["AuthorSort"] = sort==  "Author"?  "Author" : "Author";
+            ViewData["TitleSort"] = sort == "Title"  ?  "Title" : "Title";
+            ViewData["PriceSortHL"] = sort == "Price (High to Low)" ? "Price (High to Low)" : "Price (High to Low)";
+            ViewData["PriceSortLH"] = sort == "Price (Low to High)" ? "Price (Low to High)" : "Price (Low to High)";
+            ViewData["ReleaseSort"] = sort ==  "Release Date" ? "Release Date" : "Release Date";
+            ViewData["ReleaseSortM"] = sort == "Release Date" ? "Release Date (Most Recent)" : "Release Date (Most Recent)";
+            ViewData["PageSize10"] = pageSize == "10" ? "10" : "10";
+            ViewData["PageSize20"] = pageSize == "20" ? "20" : "20";
+            ViewData["TopSort"] = sort == "Top Sellers" ? "Top Sellers" : "Top Sellers";
+            ViewData["BestSort"] = sort == "Best Rated" ? "Best Rated" : "Best Rated";
 
 
             if (search != null)
@@ -68,10 +70,10 @@ namespace mytest.Controllers
                     books = (_context.Books.OrderBy(x => x.Title));
                     break;
                 case "Price (Low to High)":
-                    books = (_context.Books.OrderByDescending(x => x.Price));
+                    books = (_context.Books.OrderBy(x => x.Price));
                     break;
                 case "Price (High to Low)":
-                    books = (_context.Books.OrderBy(x => x.Price));
+                    books = (_context.Books.OrderByDescending(x => x.Price));
                     break;
                 case "Release Date":
                     books = (_context.Books.OrderBy(x => x.ReleaseDate));

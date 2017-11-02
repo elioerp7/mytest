@@ -19,10 +19,10 @@
                 <ul class="dropdown-menu" role="menu">
                     <li>@Html.ActionLink("Author", "Index", new { sort = ViewBag.AuthorSort })</li>
                     <li>@Html.ActionLink("Title", "Index", new { sort = ViewBag.TitleSort })</li>
-                    <li>@Html.ActionLink("Price (Low to High)", "Index", new { sort = ViewBag.PriceSort })</li>
-                    <li>@Html.ActionLink("Price (High to Low)", "Index", new { sort = ViewBag.PriceSort })</li>
+                    <li>@Html.ActionLink("Price (Low to High)", "Index", new { sort = ViewBag.PriceSortLH })</li>
+                    <li>@Html.ActionLink("Price (High to Low)", "Index", new { sort = ViewBag.PriceSortHL })</li>
                     <li>@Html.ActionLink("Release Date", "Index", new { sort = ViewBag.ReleaseSort })</li>
-                    <li>@Html.ActionLink("Release Date (Most Recent)", "Index", new { sort = ViewBag.ReleaseSort })</li>
+                    <li>@Html.ActionLink("Release Date (Most Recent)", "Index", new { sort = ViewBag.ReleaseSortM })</li>
                     <li>@Html.ActionLink("Top Sellers", "Index", new { sort = ViewBag.TopSort })</li>
                     <li>@Html.ActionLink("Best Rated", "Index", new { sort = ViewBag.BestSort })</li>
                 </ul>
@@ -97,6 +97,20 @@
    class="btn btn-default @prevDisabled">
     Previous
 </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.PageIndex)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="text-uppercase">
+        @Model.PageIndex ...
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.TotalPages)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="text-uppercase">
+        @Model.TotalPages
+    </a>
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-page="@(Model.PageIndex + 1)"
