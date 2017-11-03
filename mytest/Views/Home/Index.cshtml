@@ -71,6 +71,22 @@
                     <div class="thumbnail hvr-grow">
                         <img src="@item.Image" style="height:250px; width:250px">
                         <div class="caption">
+                            <span class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    string starClass = "";
+                                    if (i <= item.Rating)
+                                    {
+                                        starClass = "starGlowN";
+                                    }
+                                    else
+                                    {
+                                        starClass = "starFadeN";
+                                    }
+
+                                    <span class="@starClass" style="background-size:20px; background-repeat: no-repeat;"></span>
+                                }
+                            </span>
                             <h5>@item.Title</h5>
                             <h6>
                                 <a href="../Home/ShowAuthor?field=@item.Author">@item.Author</a>
