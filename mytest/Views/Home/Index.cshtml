@@ -66,10 +66,10 @@
     {   
             foreach (var item in Model)
             {
-            <div class="col-lg-2 col-md-4 col-sm-2 col-xs-5" style="height:450px">
+            <div class="col-lg-2 col-md-3 col-sm-2 col-xs-5" style="height:550px; width:230px">
                 <a href="../Home/ShowBook?field=@item.ISBN">
                     <div class="thumbnail hvr-grow">
-                        <img src="@item.Image" style="height:250px; width:250px">
+                        <img src="@item.Image" style="height:300px; width:250px">
                         <div class="caption">
                             <span class="rating">
                                 @for (int i = 1; i <= 5; i++)
