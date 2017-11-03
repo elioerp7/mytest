@@ -125,7 +125,16 @@ namespace mytest.Controllers
                 var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 ViewBag.Comments = comments;
                 ViewBag.UserId = _userManager.GetUserName(User);
+                var UserId = _userManager.GetUserId(User);
+                ViewBag.bought = false;
 
+                foreach (BookOwned bo in _context.BooksOwned)
+                {
+                    if(UserId.Equals(bo.UserId) && field.Equals(bo.BookISBN))
+                    {
+                        ViewBag.bought = true;
+                    }
+                }
 
                 var ratings = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
 
