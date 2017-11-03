@@ -181,8 +181,22 @@ namespace mytest.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var bookComment = await _context.Comments.SingleOrDefaultAsync(m => m.CommentId == id);
+            var bookISBN = bookComment.BookISBN;
+            int rating = (int) bookComment.Rating;
             _context.Comments.Remove(bookComment);
             await _context.SaveChangesAsync();
+
+
+            var ratings = _context.Comments.Where(d => d.BookISBN.Equals(bookISBN)).ToList();
+            int ratingSum = ratings.Sum(d => d.Rating.Value);
+            int ratingCount = ratings.Count();
+            if (ratingCount != 0)
+            {
+                var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
+                book.Rating = ratingSum / ratingCount;
+                _context.Entry(book).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

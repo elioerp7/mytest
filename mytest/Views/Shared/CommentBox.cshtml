@@ -1,9 +1,6 @@
 <dl class="dl-horizontal">
-    <dt>
-        Comment
-    </dt>
 
-    <dd>
+
         <div class="commentBox">
             @using (Html.BeginForm("Add", "BookComments", FormMethod.Post, new { onsubmit = "return SubmitComment()" }))
             {
@@ -15,25 +12,25 @@
                         </label>
                         <div class="col-md-7">
                             <div onmouseout="CRateSelected()">
-                                <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span><span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span><span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)"></span><span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)"></span><span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
+                                <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)" style="min-width: 30px; min-height: 30px"></span><span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)" style="min-width: 30px; min-height: 30px"></span><span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)" style="min-width: 30px; min-height: 30px"></span><span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)" style="min-width: 30px; min-height: 30px"></span><span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)" style="min-width: 30px; min-height: 30px"></span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea name="Comment" id="Comment" required rows="5" style="width:940px;" class="form-control"></textarea>
+                            <textarea name="Comment" id="Comment" required rows="5" style="width:940px; margin-left:50px" class="form-control" placeholder = "Comment your experience (900 characters max)"></textarea>
                         </div>
                     </div>
                     
                     
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="checkbox" name="Anonymous" value="Checked"> Comment as Anonymous<br>
+                            <input type="checkbox" name="Anonymous" value="Checked" style="margin-left:50px"> Comment as Anonymous<br>
                             <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
                             <input type="hidden" name="Rating" id="Rating" value="0" />
                             <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
                             <br />
-                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" />
+                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" style="margin-left:50px"/>
                         </div>
                     </div>
 
@@ -41,7 +38,6 @@
             }
 
         </div>
-    </dd>
 
 </dl>
 <script>
