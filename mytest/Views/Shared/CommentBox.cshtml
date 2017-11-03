@@ -1,9 +1,6 @@
 <dl class="dl-horizontal">
-    <dt>
-        Comment
-    </dt>
 
-    <dd>
+
         <div class="commentBox">
             @using (Html.BeginForm("Add", "BookComments", FormMethod.Post, new { onsubmit = "return SubmitComment()" }))
             {
@@ -21,19 +18,19 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea name="Comment" id="Comment" required rows="5" style="width:940px;" class="form-control"></textarea>
+                            <textarea name="Comment" id="Comment" required rows="5" style="width:940px; margin-left:50px" class="form-control" placeholder = "Comment your experience (900 characters max)"></textarea>
                         </div>
                     </div>
                     
                     
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="checkbox" name="Anonymous" value="Checked"> Comment as Anonymous<br>
+                            <input type="checkbox" name="Anonymous" value="Checked" style="margin-left:50px"> Comment as Anonymous<br>
                             <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
                             <input type="hidden" name="Rating" id="Rating" value="0" />
                             <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
                             <br />
-                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" />
+                            <input type="submit" id="btnRegister" name="btnRegister" value="Submit Comment" class="btn btn-warning" style="margin-left:50px"/>
                         </div>
                     </div>
 
@@ -41,7 +38,6 @@
             }
 
         </div>
-    </dd>
 
 </dl>
 <script>
