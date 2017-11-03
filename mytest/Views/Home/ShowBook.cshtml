@@ -10,6 +10,7 @@
     var ratingCount = ViewBag.RatingCount;
     var BookISBN = ViewBag.BookISBN;
     var UserId = ViewBag.UserId;
+    var bought = ViewBag.bought;
     decimal rating = 0;
     if (ratingCount > 0)
     {
@@ -126,7 +127,10 @@
     <br />
     <br />
     <div >
-        @Html.Partial("CommentBox")
+        @if(bought)
+        {
+            @Html.Partial("CommentBox")
+        }
     </div>
 
 <script>
