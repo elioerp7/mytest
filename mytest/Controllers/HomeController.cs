@@ -124,7 +124,9 @@ namespace mytest.Controllers
                 ViewBag.BookISBN = field;
                 var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 ViewBag.Comments = comments;
-                ViewBag.UserId = _userManager.GetUserName(User);
+                ViewBag.UserName = _userManager.GetUserName(User);
+                ViewBag.UserId = _userManager.GetUserId(User);
+
                 var UserId = _userManager.GetUserId(User);
                 ViewBag.bought = false;
 

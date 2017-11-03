@@ -11,6 +11,8 @@ namespace mytest.Data
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<BookOwned> BooksOwned { get; set; }
+        public DbSet<ShoppingCart> MyShoppingCart { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

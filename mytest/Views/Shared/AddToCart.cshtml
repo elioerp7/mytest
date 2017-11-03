@@ -1,0 +1,20 @@
+
+@{
+    ViewData["Title"] = "AddToCart";
+}
+
+@using (Html.BeginForm("Add", "ShoppingCarts", FormMethod.Post))
+            {
+    @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
+                <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
+                <input name="Quantity" class="dropdown" id="Quantity" value="@ViewBag.Quantity" />
+                <br />
+                <input type="submit" id="btnRegister" name="btnRegister" value="Add To Cart" class="btn btn-warning" style="margin-left:50px" />
+            </div>
+        </div>
+
+}
+

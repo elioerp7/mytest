@@ -50,7 +50,6 @@ namespace mytest
                 .AddDefaultTokenProviders();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
             services.AddMvc();
             services.AddMemoryCache();

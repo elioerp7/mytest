@@ -9,6 +9,7 @@
     var ratingSum = ViewBag.RatingSum;
     var ratingCount = ViewBag.RatingCount;
     var BookISBN = ViewBag.BookISBN;
+    var UserName = ViewBag.UserName;
     var UserId = ViewBag.UserId;
     var bought = ViewBag.bought;
     decimal rating = 0;
@@ -63,7 +64,7 @@
                     <i style="padding-left:7em"><a href="ShoppingCartRequest?field=@item.Title" class="btn btn-primary" role="button">Add To Cart</a></i>
 
                 </div>
-
+                @Html.Partial("AddToCart");
                 <div class="right">
                     <h6>
                         <font size="4">
@@ -127,10 +128,8 @@
     <br />
     <br />
     <div >
-        @if(bought)
-        {
+
             @Html.Partial("CommentBox")
-        }
     </div>
 
 <script>

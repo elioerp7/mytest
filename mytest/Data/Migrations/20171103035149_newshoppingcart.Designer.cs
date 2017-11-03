@@ -8,9 +8,10 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171103035149_newshoppingcart")]
+    partial class newshoppingcart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -269,24 +270,6 @@ namespace mytest.Data.Migrations
                     b.HasKey("TransactionId");
 
                     b.ToTable("BooksOwned");
-                });
-
-            modelBuilder.Entity("mytest.Models.ShoppingCart", b =>
-                {
-                    b.Property<int>("ShoppingCartId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BookISBN");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<double>("Total");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("ShoppingCartId");
-
-                    b.ToTable("MyShoppingCart");
                 });
 
             modelBuilder.Entity("mytest.Models.ShoppingCartItem", b =>
