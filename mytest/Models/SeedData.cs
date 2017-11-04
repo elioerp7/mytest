@@ -22,6 +22,10 @@ namespace mytest.Models
                 {
                     context.Books.Remove(b);
                 }
+                foreach (Author a in context.Authors)
+                {
+                    context.Authors.Remove(a);
+                }
                 context.SaveChanges();
 
 
@@ -358,7 +362,7 @@ namespace mytest.Models
                          Price = 10.65,
                          Description = "August Pullman was born with a facial difference that, up until now, has prevented him from going to a mainstream school. Starting 5th grade at Beecher Prep, he wants nothing more than to be treated as an" +
                          " ordinary kid—but his new classmates can’t get past Auggie’s extraordinary face. WONDER, now a #1 New York Times bestseller and included on the Texas Bluebonnet Award master list, begins from Auggie’s point of view, but soon switches to include his classmates, his sister, her boyfriend, and others. These perspectives converge in a portrait of one community’s struggle with empathy, compassion, and acceptance. ",
-                         Author = "R.J. Palacio",
+                         Author = "Raquel J. Palacio",
                          Genre = "Adventure",
                          Publisher = "Knopf Books for Young Readers",
                          Quantity = 900,
@@ -374,7 +378,7 @@ namespace mytest.Models
                          Title = "Auggie & Me: Three Wonder Stories",
                          Price = 12.42,
                          Description = "These stories are an extra peek at Auggie before he started at Beecher Prep and during his first year there. Readers get to see him through the eyes of Julian, the bully; Christopher, Auggie’s oldest friend; and Charlotte, Auggie’s new friend at school. Together, these three stories are a treasure for readers who don’t want to leave Auggie behind when they finish Wonder.",
-                         Author = "R.J. Palacio",
+                         Author = "Raquel J. Palacio",
                          Genre = "Adventure",
                          Publisher = "Knopf Books for Young Readers",
                          Quantity = 900,
@@ -390,7 +394,7 @@ namespace mytest.Models
                          Title = "We're All Wonders",
                          Price = 14.24,
                          Description = "We’re All Wonders may be Auggie’s story, but it taps into every child’s longing to belong, and to be seen for who they truly are. It’s the perfect way for families and educators to talk about empathy and kindness with young children.",
-                         Author = "R.J. Palacio",
+                         Author = "Raquel J. Palacio",
                          Genre = "Adventure",
                          Publisher = "Knopf Books for Young Readers",
                          Quantity = 900,
@@ -406,7 +410,7 @@ namespace mytest.Models
                          Title = "365 Days of Wonder: Mr. Browne's Precepts",
                          Price = 8.48,
                          Description = "In Wonder, readers were introduced to memorable English teacher Mr. Browne and his love of precepts. This companion book features conversations between Mr. Browne and Auggie, Julian, Summer, Jack Will, and others, giving readers a special peek at their lives after Wonder ends. Mr. Browne's essays and correspondence are rounded out by a precept for each day of the year—drawn from popular songs to children’s books to inscriptions on Egyptian tombstones to fortune cookies. His selections celebrate the goodness of human beings, the strength of people’s hearts, and the power of people’s wills.",
-                         Author = "R.J. Palacio",
+                         Author = "Raquel J. Palacio",
                          Genre = "Adventure",
                          Publisher = "Knopf Books for Young Readers",
                          Quantity = 900,
@@ -438,7 +442,43 @@ namespace mytest.Models
 
 
                 );
-
+                context.Authors.AddRange(
+                     new Author
+                     {
+                         Name = "Paulo Coelho",
+                         DateofBirth = DateTime.Parse("08/24/1947"),
+                         DateofDeath = null,
+                         BirthCity = "Rio de Janeiro",
+                         BirthCountry = "Brazil",
+                         Bio = "The Brazilian author PAULO COELHO is considered one of the most influential authors of our times. " +
+                         "His books have sold more than 165 million copies worldwide, have been released in 170 countries and been " +
+                         "translated into 80 languages. Born in Rio de Janeiro in 1947, he soon discovered his vocation " +
+                         "for writing.He worked as a director, theater actor, songwriter and journalist. His collaboration with Brazilian " +
+                         "composer and singer Raúl Seixas gave some of the greatest classic rock songs in Brazil. He has received numerous " +
+                         "prestigious international awards. He is member of the Academy of Letters of Brazil since 2002 and Messenger of Peace" +
+                         " by the United Nations since 2007. In 2009 he received the Guinness World Record for the most translated author" +
+                         " for the same book (The Alchemist).",
+                         Image = "http://s3.amazonaws.com/dldwebsite-production/black_and_white_avatars/paulo-coelho/pulse/coelho-quadrat-web.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Raquel J. Palacio",
+                         DateofBirth = DateTime.Parse("07/13/1963"),
+                         DateofDeath = null,
+                         BirthCity = "New York City",
+                         BirthCountry = "United States",
+                         Bio = "R. J. Palacio was born and raised in New York City. She attended the High School of Art and " +
+                         "Design and the Parsons School of Design, where she majored in illustration with the hopes of someday" +
+                         " following in the footsteps of her favorite childhood author-illustrators, Antoine de Saint-Exupéry," +
+                         " Maurice Sendak, and the D’Aulaires. She was a graphic designer and art director for many years before" +
+                         " writing Wonder. We’re All Wonders, which is based conceptually on the themes of her novel, represents" +
+                         " the fulfillment of her dream to write and illustrate her own picture book. R.J. is also the author of " +
+                         "Auggie & Me: Three Wonder Stories and 365 Days of Wonder: Mr. Browne’s Book of Precepts. She lives in" +
+                         " Brooklyn, where she is surrounded by magical water towers, with her husband, their two sons, and their" +
+                         " two dogs, Bear and Beau.",
+                         Image = "http://rjpalacio.com/uploads/2/9/3/1/2931329/121753.jpg?269"
+                     }
+               );
                 context.SaveChanges();
             }
         }

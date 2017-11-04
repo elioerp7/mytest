@@ -2,6 +2,7 @@
 
     @{
         ViewData["Title"] = "ShowAuthor";
+        int count = 0;
     }
 
 <br />
@@ -28,38 +29,43 @@
         {
             foreach (var item in Model)
             {
-                <div>
-                    <div class="hvr-forward">
-                        <img src=@item.Image>
+                if (@count == 0)
+                {
+                    <div>
+                        <div class="hvr-forward">
+                            <img src=@item.Image>
+                        </div>
                     </div>
-                </div>
-                <h3>
-                    <font size="12">
-                        @item.Name
-                    </font>
-                </h3>
-                <div>
-                    <h4>
-                        <font size="4">
-                            @Convert.ToDateTime(item.DateofBirth).ToString("MMMM dd, yyyy") -
-                            @if (item.DateofDeath != null) {
-                                @Convert.ToDateTime(item.DateofDeath).ToString("MMMM dd, yyyy")
-                            }
-                            else
-                            { 
-                                <text>Present</text>
-                            }
-                            <br />
+                    <h3>
+                        <font size="12">
+                            @item.Name
                         </font>
-                    </h4>
-                    <h5><font size ="3">
-                            @item.BirthCity, @item.BirthCountry
-                        </font>
-                    </h5>
-                </div>
-                <div>
-                    <i>@item.Bio</i>
-                </div>
+                    </h3>
+                    <div>
+                        <h4>
+                            <font size="4">
+                                @Convert.ToDateTime(item.DateofBirth).ToString("MMMM dd, yyyy") -
+                                @if (item.DateofDeath != null)
+                                {
+                                    @Convert.ToDateTime(item.DateofDeath).ToString("MMMM dd, yyyy")
+                                }
+                                else
+                                {
+                                    <text>Present</text>
+                                }
+                                <br />
+                            </font>
+                        </h4>
+                        <h5><font size ="3">
+                                @item.BirthCity, @item.BirthCountry
+                            </font>
+                        </h5>
+                    </div>
+                    <div>
+                        <i>@item.Bio</i>
+                    </div>
+                }
+                count = 1;
             }
         }
     </div>
