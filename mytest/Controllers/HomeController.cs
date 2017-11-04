@@ -122,6 +122,9 @@ namespace mytest.Controllers
             else
             {
                 ViewBag.BookISBN = field;
+                var book = _context.Books.Where(d => d.ISBN.Equals(field)).ToList();
+                var Quantity = book.Sum(d => d.Quantity);
+                ViewBag.Quantity = Quantity;
                 var comments = _context.Comments.Where(d => d.BookISBN.Equals(field)).ToList();
                 ViewBag.Comments = comments;
                 ViewBag.UserName = _userManager.GetUserName(User);

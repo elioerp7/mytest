@@ -1,20 +1,37 @@
 
 @{
     ViewData["Title"] = "AddToCart";
+    var list = new List<SelectListItem>();
+    ViewBag.Quantity++;
+    @for(var i = 1; i < ViewBag.Quantity; i++)
+    {
+        list.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+
+    }
+    ViewBag.list = list;
+
 }
 
 @using (Html.BeginForm("Add", "ShoppingCarts", FormMethod.Post))
             {
     @Html.AntiForgeryToken()
-        <div class="form-group">
-            <div class="col-md-12">
+        <a class="form-group">
                 <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
                 <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-                <input name="Quantity" class="dropdown" id="Quantity" value="@ViewBag.Quantity" />
-                <br />
-                <input type="submit" id="btnRegister" name="btnRegister" value="Add To Cart" class="btn btn-warning" style="margin-left:50px" />
-            </div>
-        </div>
+                @*<input name="Quantity"  id="Quantity" class="dropdown" value=Quantity />*@
+                @Html.DropDownList("Quantity", new SelectList(ViewBag.list, "Text", "Value"), "Qty")<input type="submit" id="btnRegister" name="btnRegister" value="Add To Cart" class="btn btn-primary" role="button" style="margin-left:30px" />
+                
+        </a>
 
 }
+    @*for (var i = 1; i < 31; i++)
+        list.Add(new SelectListItem { Text = i.ToString(), Value =    i.ToString() });
+    ViewBag.list = list;
+    return View();
+    View
 
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownList("drp", new SelectList(ViewBag.list, "Text", "Value"), "Select")
+        <input type="submit">
+    }*@

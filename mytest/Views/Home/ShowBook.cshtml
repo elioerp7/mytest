@@ -12,6 +12,7 @@
     var UserName = ViewBag.UserName;
     var UserId = ViewBag.UserId;
     var bought = ViewBag.bought;
+    var Quantity = ViewBag.Quantity;
     decimal rating = 0;
     if (ratingCount > 0)
     {
@@ -61,10 +62,9 @@
                 <div>
                     <span class="starFadeN" id="sRate1" style="min-width: 30px; min-height: 30px"></span><span class="starFadeN" id="sRate2"  style="min-width: 30px; min-height: 30px"></span><span class="starFadeN" id="sRate3"  style="min-width: 30px; min-height: 30px"></span><span class="starFadeN" id="sRate4" style="min-width: 30px; min-height: 30px"></span><span class="starFadeN" id="sRate5"  style="min-width: 30px; min-height: 30px"></span>
                     (@ratingCount Reviews)
-                    <i style="padding-left:7em"><a href="ShoppingCartRequest?field=@item.Title" class="btn btn-primary" role="button">Add To Cart</a></i>
+                    <i style="padding-left:4em">@Html.Partial("AddToCart")</i>
 
                 </div>
-                @Html.Partial("AddToCart");
                 <div class="right">
                     <h6>
                         <font size="4">

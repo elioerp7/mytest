@@ -21,6 +21,7 @@ namespace mytest.Models
 
         public string BookISBN { get; set; }
 
+        [MinLength(0)]
         public int Quantity { get; set; }
 
         public double Total { get; set; }
