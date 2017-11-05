@@ -96,8 +96,13 @@ namespace mytest.Controllers
             Int32.TryParse(pageSize, out sizePage);
 
             if (sizePage == 0)
-                sizePage = 10; 
+                sizePage = 10;
+
+
             
+            getCartItems();
+
+
             return View(await GeekTextBooks.PaginatedList<Book>.CreateAsync(books.AsNoTracking(), page ?? 1, sizePage));
 
         }
@@ -133,6 +138,8 @@ namespace mytest.Controllers
                 var UserId = _userManager.GetUserId(User);
                 ViewBag.bought = false;
 
+
+
                 foreach (BookOwned bo in _context.BooksOwned)
                 {
                     if(UserId.Equals(bo.UserId) && field.Equals(bo.BookISBN))
@@ -155,6 +162,7 @@ namespace mytest.Controllers
                     ViewBag.RatingSum = 0;
                     ViewBag.RatingCount = 0;
                 }
+                getCartItems();
 
                 return View(_context.Books.Where(x => x.ISBN.Equals(field) || field == null).ToList());
             }
@@ -162,12 +170,28 @@ namespace mytest.Controllers
         [Authorize]
         public IActionResult ShowAuthor(string field)
         {
+            getCartItems();
             if (field == null)
                 return View();
             else
             {
                 return View(_context.Authors.Where(x => x.Name.ToLower().Equals(field.ToLower()) || field == null).ToList());
             }
+        }
+
+        public void getCartItems()
+        {
+            //getting items in shopping cart
+            ViewBag.UserId = _userManager.GetUserId(User);
+
+            var UserId = _userManager.GetUserId(User);
+            var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
+            int ItemsInCart = 0;
+            foreach (ShoppingCart s in listofcarts)
+            {
+                ItemsInCart += s.Quantity;
+            }
+            ViewBag.ItemsInCart = ItemsInCart;
         }
     }
 }

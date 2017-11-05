@@ -9,6 +9,26 @@
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
+                
+                <a class="shoppingCart" id="Cart" title="ShoppingCart" style="margin-top:10px;background-size:30px; background-repeat: no-repeat;"> 
+                  <b class="circle" style="color:black; position:absolute">
+                    
+                    @if (@ViewBag.ItemsInCart > 99)
+                    {
+                        <i style="font-size:10px">+99</i>
+                    }
+                    else
+                    {
+                        @ViewBag.ItemsInCart
+
+                    }
+
+                  </b>
+                    
+                </a>
+
+            </li>
+            <li>
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>

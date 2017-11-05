@@ -84,3 +84,23 @@ textarea {
     min-height: 20px;
     display: inline-block;
 }
+
+.shoppingCart {
+    background-image: url('/images/ShoppingCart.gif');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+.circle {
+    display: block;
+    height: 19px;
+    width: 19px;
+    line-height: 15px;
+    -moz-border-radius: 50px; /* or 50% */
+    border-radius: 50px; /* or 50% */
+    background-color: Red;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
