@@ -1,11 +1,11 @@
 @model IEnumerable<mytest.Models.Author>
 
-    @{
-        ViewData["Title"] = "ShowAuthor";
-        int count = 0;
-        var books = ViewBag.books;
+@{
+    ViewData["Title"] = "ShowAuthor";
+    int count = 0;
+    var books = ViewBag.books;
 
-    }
+}
 
 <br />
 
@@ -24,29 +24,33 @@
     </div>
 </div>
 
-<br />
-
-    <div class="row" height="220">
-        @if (Model.Count() != 0)
+<div class="container">
+    
+    @if (Model.Count() != 0)
+    {
+        @foreach (var item in Model)
         {
-            foreach (var item in Model)
+            @if (@count == 0)
             {
-                if (@count == 0)
-                {
-                    <div>
+                <div class="row" style="padding-top:5px;">
+                    <div class="col-md-6" style="text-align:center;">
                         <div class="hvr-forward">
-                            <img src=@item.Image>
+                            <img src=@item.Image style="height:450px;">
                         </div>
                     </div>
-                    <h3>
-                        <font size="12">
-                            @item.Name
-                        </font>
-                    </h3>
-                    <div>
+
+                    <div class="col-md-6" style="text-align:right;">
+                        <h3>
+                            <font size="12">
+                                @item.Name
+                            </font>
+                        </h3>
                         <h4>
                             <font size="4">
-                                @Convert.ToDateTime(item.DateofBirth).ToString("MMMM dd, yyyy") -
+                                @if (item.DateofBirth != null)
+                                { 
+                                    @Convert.ToDateTime(item.DateofBirth).ToString("MMMM dd, yyyy")
+                                }
                                 @if (item.DateofDeath != null)
                                 {
                                     @Convert.ToDateTime(item.DateofDeath).ToString("MMMM dd, yyyy")
@@ -58,21 +62,41 @@
                                 <br />
                             </font>
                         </h4>
-                        <h5><font size ="3">
+                        <h5>
+                            <font size="3">
                                 @item.BirthCity, @item.BirthCountry
                             </font>
                         </h5>
                     </div>
-                    <div>
-                        <i>@item.Bio</i>
-                    </div>
-                }
-                count = 1;
-                foreach (Book b in books)
-                {
-                    <img src=@b.Image class="hvr-grow">
+                </div>
 
-                }
-            }
-        }
-    </div>
+    <div class="row" style="padding-top:5px;">
+                        <div class="col-md-12">
+                            <div class="tab">
+                                <button class="tablinks" onclick="openTab(event, 'Bio')" id="defaultOpen">Biography</button>
+                                <button class="tablinks" onclick="openTab(event, 'Rb')">Related Books</button>
+                            </div>
+                        </div>
+     </div>
+
+         <div id="Bio" class="tabcontent">
+                        <i>@item.Bio</i>
+         </div>
+
+              }
+                count = 1;
+
+         <div id="Rb" class="tabcontent">
+             <div style="text-align:center;">
+                    @foreach (Book b in books)
+                    {
+                        <a href="../Home/ShowBook?field=@b.ISBN">
+                            <img src=@b.Image class="hvr-grow" style="width:180px;">
+                        </a>
+
+                     }
+             </div>
+          </div>
+         }
+     }
+</div>
