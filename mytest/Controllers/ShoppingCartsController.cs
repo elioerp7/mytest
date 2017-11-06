@@ -85,6 +85,7 @@ namespace mytest.Controllers
                 if (s.BookISBN.Equals(bookISBN))
                 {
                     s.Quantity += quantity;
+                    s.Total = s.Quantity * book.Price;
                     _context.Entry(s).State = EntityState.Modified;
                     _context.SaveChanges();
                     return RedirectToAction("ShowBook", "Home", new { field = bookISBN.ToString() });
