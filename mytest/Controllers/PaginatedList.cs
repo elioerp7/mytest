@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace GeekTextBooks
 {
     public class PaginatedList<T> : List<T>
@@ -11,14 +12,15 @@ namespace GeekTextBooks
         public int PageIndex { get; private set; }
         public int FirstIndex { get; private set; }
         public int TotalPages { get; private set; }
-
+        public static int Size = 10;
+        
+        
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
-            
             PageIndex = pageIndex;
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            FirstIndex = (int)Math.Ceiling(1 / (double)pageSize);
+            TotalPages = (int)Math.Ceiling(count / (double)Size);
+            FirstIndex = (int)Math.Ceiling(1 / (double)Size);
 
             this.AddRange(items);
 
@@ -42,9 +44,14 @@ namespace GeekTextBooks
 
         public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)
         {
+            if (pageSize == 20)
+                Size = 20;
+            else if (pageSize == 10)
+                Size = 10;
+
             var count = await source.CountAsync();
-            var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PaginatedList<T>(items, count, pageIndex, pageSize);
+            var items = await source.Skip((pageIndex - 1) * Size).Take(Size).ToListAsync();
+            return new PaginatedList<T>(items, count, pageIndex, Size);
         }
     }
 }

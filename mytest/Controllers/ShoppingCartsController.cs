@@ -79,7 +79,18 @@ namespace mytest.Controllers
             var bookISBN = form["BookISBN"].ToString();
             var quantity = int.Parse(form["Quantity"]);
             var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
-
+            var cartItems = _context.MyShoppingCart.ToList();
+            foreach (ShoppingCart s in cartItems)
+            {
+                if (s.BookISBN.Equals(bookISBN))
+                {
+                    s.Quantity += quantity;
+                    s.Total = s.Quantity * book.Price;
+                    _context.Entry(s).State = EntityState.Modified;
+                    _context.SaveChanges();
+                    return RedirectToAction("ShowBook", "Home", new { field = bookISBN.ToString() });
+                }
+            }
             ShoppingCart item = new ShoppingCart()
             {
                 UserId = userId,

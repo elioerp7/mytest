@@ -16,7 +16,7 @@ namespace mytest.Models
                 // Look for any Books.
                 if (context.Books.Any())
                 {
-                   return;   // DB has been seeded
+                   //return;   // DB has been seeded
                 }
                 foreach (Book b in context.Books)
                 {

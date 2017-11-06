@@ -11,11 +11,13 @@ using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller 
     {
         private readonly ApplicationDbContext _context;
         private UserManager<ApplicationUser> _userManager;
-        //private readonly string sortOrder;
+        
+
+       
 
         public HomeController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -24,8 +26,10 @@ namespace mytest.Controllers
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
         }
 
+        
+
         [Authorize]
-        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? page, string pageSize)
+        public async Task<IActionResult> Index(string sort, string search, string currentFilter, int? page, string pageSize, int sizePage)
         {
             ViewData["CurrentSort"] = sort;
             ViewData["AuthorSort"] = sort==  "Author"?  "Author" : "Author";
@@ -39,6 +43,8 @@ namespace mytest.Controllers
             ViewData["TopSort"] = sort == "Top Sellers" ? "Top Sellers" : "Top Sellers";
             ViewData["BestSort"] = sort == "Best Rated" ? "Best Rated" : "Best Rated";
 
+            Int32.TryParse(pageSize, out sizePage);
+          
 
             if (search != null)
             {
@@ -93,15 +99,10 @@ namespace mytest.Controllers
                     break;
 
             }
-            int sizePage = 0;
-            Int32.TryParse(pageSize, out sizePage);
-
-            if (sizePage == 0)
-                sizePage = 10;
-
-
             
             getCartItems();
+
+            
 
 
             return View(await GeekTextBooks.PaginatedList<Book>.CreateAsync(books.AsNoTracking(), page ?? 1, sizePage));
