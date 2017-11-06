@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using mytest.Data;
 using mytest.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -181,6 +182,26 @@ namespace mytest.Controllers
             {
                 return View(_context.Authors.Where(x => x.Name.ToLower().Equals(field.ToLower()) || field == null).ToList());
             }
+        }
+
+        public async Task<IActionResult> ShoppingCart()
+        {
+            getCartItems();
+            var UserId = _userManager.GetUserId(User);
+            var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
+            ViewBag.userItems = listofcarts;
+            List<Book> booksInCart = new List<Book>();
+
+            foreach (ShoppingCart s in listofcarts)
+            {
+                var temp = _context.Books.Where(b => b.ISBN.Equals(s.BookISBN)).ToList();
+                if (temp.Count() != 0)
+                {
+                    booksInCart.Add(temp.ElementAt(0));
+                }
+            }
+            ViewBag.booksInCart = booksInCart;
+            return View(await _context.MyShoppingCart.ToListAsync());
         }
 
         public void getCartItems()

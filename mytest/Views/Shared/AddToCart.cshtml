@@ -19,7 +19,8 @@
                 <input type="hidden" name="BookISBN" value="@ViewBag.BookISBN" />
                 <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
                 @*<input name="Quantity"  id="Quantity" class="dropdown" value=Quantity />*@
-                @Html.DropDownList("Quantity", new SelectList(ViewBag.list, "Text", "Value"), "Qty")<input type="submit" id="btnRegister" name="btnRegister" value="Add To Cart" class="btn btn-primary" role="button" style="margin-left:30px" />
+                Qty
+                @Html.DropDownList("Quantity", new SelectList(ViewBag.list, "Text", "Value"))<input type="submit" id="btnRegister" name="btnRegister" value="Add To Cart" class="btn btn-primary" role="button" style="margin-left:30px" />
                 
         </a>
 
