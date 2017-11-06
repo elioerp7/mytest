@@ -477,6 +477,219 @@ namespace mytest.Models
                          " Brooklyn, where she is surrounded by magical water towers, with her husband, their two sons, and their" +
                          " two dogs, Bear and Beau.",
                          Image = "http://rjpalacio.com/uploads/2/9/3/1/2931329/121753.jpg?269"
+                     },
+                     new Author
+                     {
+                          Name = "Stieg Larsson",
+                          DateofBirth = DateTime.Parse("08/15/1954"),
+                          DateofDeath = DateTime.Parse("09/11/2004"),
+                          BirthCity = "Umeå",
+                          BirthCountry = "Sweden",
+                          Bio = "Karl Stig-Erland Stieg Larsson(15 August 1954 – 9 November 2004) was " +                    
+                          "a Swedish journalist and writer.He is best known for writing the Millennium " +
+                          "trilogy of crime novels, which were published posthumously and adapted as " +
+                          "motion pictures.Larsson lived much of his life in Stockholm and worked there " +
+                          "as a journalist and as an independent researcher of right - wing extremism.He " +
+                          "was the second best - selling author in the world for 2008, behind Khaled " +
+                          "Hosseini.The third novel in the Millennium trilogy, The Girl Who Kicked the " +
+                          "Hornets' Nest, became the most sold book in the United States in 2010, " +
+                          "according to Publishers Weekly. By March 2015, his series had sold 80 million " +
+                          "copies worldwide.",
+                          Image = "https://www.biography.com/.image/t_share/MTE4MDAzNDEwODE2MzcwMTkw/stieg-larsson-17181752-1-402.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Sarah MacLean",
+                         DateofBirth = DateTime.Parse("12/17/1978"),
+                         DateofDeath = null,
+                         BirthCity = "Linocln, RI",
+                         BirthCountry = "United States",
+                         Bio = "New York Times, Washington Post & USA Today bestseller Sarah MacLean " +
+                            "is the author of historical romance novels that have been translated into " +
+                            "more than twenty languages, and winner of back-to-back RITA Awards for " +
+                            "best historical romance from the Romance Writers of America." +
+                            "Sarah is a leading advocate for the romance genre, speaking widely on its " +
+                            "place at the nexus of gender and cultural studies. She is the author of a " +
+                            "monthly column celebrating the best of the genre for the Washington Post. " +
+                            "Her work in support of romance and the women who read it earned her a place " +
+                            "on Jezebel.com's Sheroes list of 2014 and led Entertainment Weekly to call " +
+                            "her gracefully furious." +
+                            "Sarah lives in New York City with her husband and daughter.",
+                         Image = "https://static1.squarespace.com/static/52654ec3e4b099d3af71cbb4/t/58c1f8176a4963a1d42d2a20/1489107004533/maclean.jpg?format=500w"
+                     },
+                     new Author
+                     {
+                         Name = "J. K. Rowling",
+                         DateofBirth = DateTime.Parse("07/31/1965"),
+                         DateofDeath = null,
+                         BirthCity = "Yate",
+                         BirthCountry = "England",
+                         Bio = "Born in Yate, England, on July 31, 1965, J.K. Rowling came from humble " +
+                            "economic means before writing Harry Potter and the Sorcerer's Stone, a " +
+                            "children's fantasy novel. The work was an international hit and Rowling " +
+                            " wrote six more books in the series, which sold hundreds of millions of " +
+                            "copies and was adapted into a blockbuster film franchise. In 2012, Rowling " +
+                            "released the novel The Casual Vacancy.",
+                         Image = "https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/JKRowling.jpg/revision/latest/scale-to-width-down/336?cb=20151001174249"
+                     },
+                     new Author
+                     {
+                         Name = "J.R.R. Tolkien",
+                         DateofBirth = DateTime.Parse("01/03/1892"),
+                         DateofDeath = DateTime.Parse("09/09/1973"),
+                         BirthCity = "Bloemfontein",
+                         BirthCountry = "South Africa",
+                         Bio = "Born on January 3, 1892, in Bloemfontein, South Africa, " +
+                                "J.R.R. Tolkien settled in England as a child, going on to study at Exeter " +
+                                "College. While teaching at Oxford University, he published the popular " +
+                                "fantasy novels The Hobbit and the Lord of the Rings trilogy. The works have " +
+                                "had a devoted international fan base and been adapted into award-winning " +
+                                "blockbuster films. Tolkien died in 1973 at 81.",
+                         Image = "https://www.tolkiensociety.org/wp-content/uploads/2016/11/pamela_chandler_tolkien1-290x366.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "George R. Martin",
+                         DateofBirth = DateTime.Parse("07/13/1963"),
+                         DateofDeath = null,
+                         BirthCity = "Bayonne, NJ",
+                         BirthCountry = "United States",
+                         Bio = "George Raymond Richard Martin (born George Raymond Martin; " +
+                            "September 20, 1948), often referred to as George R. R. Martin, is an " +
+                            "American novelist and short-story writer in the fantasy, horror, and " +
+                            "science fiction genres, screenwriter, and television producer. He is best " +
+                            "known for his series of epic fantasy novels, A Song of Ice and Fire, which " +
+                            "was later adapted into the HBO series Game of Thrones (2011–present). " +
+                            "Martin serves as the series's co-executive producer, and also scripted four " +
+                            "episodes of the series." +
+                            "In 2005, Lev Grossman of Time called Martin the American Tolkien, and in " +
+                            "2011, he was included on the annual Time 100 list of the most influential " +
+                            "people in the world.",
+                         Image = "http://awoiaf.westeros.org/images/4/4b/George_R_R_Martin.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Nicholas Sparks",
+                         DateofBirth = DateTime.Parse("12/31/1965"),
+                         DateofDeath = null,
+                         BirthCity = "Omaha, NE",
+                         BirthCountry = "United States",
+                         Bio = "Nicholas Charles Sparks (born December 31, 1965) is an American " +
+                            "romance novelist, screenwriter and producer. He has published eighteen " +
+                            "novels and two non-fiction books. Several of his novels have become " +
+                            "international bestsellers, and eleven of his romantic-drama novels have " +
+                            "been adapted to film all with multimillion-dollar box office grosses." +
+                            "Sparks was born in Omaha, Nebraska and wrote his first novel, The Passing, " +
+                            "in 1985, while a student at the University of Notre Dame. His first " +
+                            "published work came in 1990, when he co-wrote with Billy Mills Wokini: " +
+                            "A Lakota Journey to Happiness and Self-Understanding, which sold " +
+                            "approximated 50,000 copies in its first year. In 1993, Sparks wrote his " +
+                            "breakthrough novel The Notebook in his spare time while selling " +
+                            "pharmaceuticals in Washington, D.C.. Two years later, his novel was " +
+                            "discovered by literary agent Theresa Park who offered to represent him. " +
+                            "The novel was published in October 1996 and made the New York Times " +
+                            "best-seller list in its first week of release.",
+                         Image = "http://cdn.collider.com/wp-content/image-base/People/N/Nicholas_Sparks/Nicholas%20Sparks%20%20(1).jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Johanna Spyri",
+                         DateofBirth = DateTime.Parse("06/12/1827"),
+                         DateofDeath = DateTime.Parse("07/07/1901"),
+                         BirthCity = "Hirzel",
+                         BirthCountry = "Switzerland",
+                         Bio = "She was born Johanna Heusser in Hirzel, Switzerland. Her father was a doctor and her mother was a poet. " +
+                                "She lived with her extended family: her grandmother, two aunties, and two " +
+                                "cousins as well as her mother, father, two brothers and three sisters. " +
+                                "This large household inspired her when she wrote Gritli's Children. " +
+                                "She spent several summers around Chur in Graubünden when she was young. " +
+                                "This setting was later used in her novels." +
+                                "Her only education was her village school in Hirzel. She wrote poetry as a child." +
+                                "She married Bernhard Spyri, an employee , when she was 25. They met when " +
+                                "they were children. They lived in Zurich, Switzerland and had only one " +
+                                "child, a son, Berhard Diethelm Spyri, in 1855. In Zurich, they were " +
+                                "friends with the musician Richard Wagner and poet Conrad Ferdinand Meyer. " +
+                                "Both her husband and son died of tuberculosis in 1884.",
+                         Image = "https://upload.wikimedia.org/wikipedia/commons/f/f3/Zentralbibliothek_Z%C3%BCrich_-_Johanna_Spyri_-_000006279_2.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "C. N. Crawford",
+                         DateofBirth = null,
+                         DateofDeath = null,
+                         BirthCity = "Lexington, MA",
+                         BirthCountry = "United States",
+                         Bio = "C. N. Crawford is not one person but two. We write our novels " +
+                            "collaboratively, passing our laptops back and forth to edit each other's " +
+                            "words. Christine (C) has a lifelong interest in New England folklore - " +
+                            "with a particular fondness for creepy old cemeteries. Nick (N) spent his " +
+                            "childhood reading fantasy and science fiction which may partly explain " +
+                            "why he is also a scientist.",
+                         Image = "https://images-na.ssl-images-amazon.com/images/I/41BsomkIgPL._UX250_.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Rupi Kaur",
+                         DateofBirth = DateTime.Parse("10/05/1992"),
+                         DateofDeath = null,
+                         BirthCity = "Punjab",
+                         BirthCountry = "India",
+                         Bio = "Rupi Kaur is a #1 ‘New York Times' bestselling author and illustrator " +
+                            "of two collections of poetry. She started drawing at the age of five when " +
+                            "her mother handed her a paintbrush and said—draw your heart out. Rupi " +
+                            "views her life as an exploration of that artistic journey. After " +
+                            "completing her degree in rhetoric studies, she published her first " +
+                            "collection of poems ‘milk and honey’ in 2014. The internationally " +
+                            "acclaimed collection sold well over a million copies gracing the New York " +
+                            "Times bestseller list every week for over a year. It has since been " +
+                            "translated into over thirty languages. Her long-awaited second collection " +
+                            "‘the sun and her flowers’ was published in 2017. Through this collection " +
+                            "she continues to explore a variety of themes ranging from love. Loss. " +
+                            "Trauma. Healing. Femininity. Migration. And revolution. Rupi has performed " +
+                            "her poetry across the world. Her photography and art direction are warmly " +
+                            "embraced and she hopes to continue this expression for years to come.",
+                         Image = "https://rupikaur.com/wp-content/uploads/2017/07/Rupi-Kaur-about.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Walter Isaacson",
+                         DateofBirth = DateTime.Parse("05/20/1952"),
+                         DateofDeath = null,
+                         BirthCity = "New Orleans, LA",
+                         BirthCountry = "United States",
+                         Bio = "Walter Isaacson, University Professor of History at Tulane, has been " +
+                            "CEO of the Aspen Institute, chairman of CNN, and editor of Time magazine. " +
+                            "He is the author of Leonardo da Vinci; The Innovators; Steve Jobs; " +
+                            "Einstein: His Life and Universe; Benjamin Franklin: An American Life; " +
+                            "and Kissinger: A Biography, and the coauthor of The Wise Men: Six Friends " +
+                            "and the World They Made.",
+                         Image = "https://prodimage.images-bn.com/cimages/0000000311778_p0_v2_s280x180.jpg"
+                     },
+                     new Author
+                     {
+                         Name = "Chris Matthews",
+                         DateofBirth = DateTime.Parse("12/17/1945"),
+                         DateofDeath = null,
+                         BirthCity = "Philadelphia",
+                         BirthCountry = "Pennsylvania",
+                         Bio = "A revealing new portrait of Robert F. Kennedy that gets closer to " +
+                            "the man than any book before, by bestselling author Chris Matthews, an " +
+                            "esteemed Kennedy expert and anchor of MSNBC’s Hardball." +
+                            "With his bestselling biography Jack Kennedy, Chris Matthews shared a new " +
+                            "look of one of America’s most beloved Presidents and the patriotic spirit " +
+                            "that defined him. Now, with Bobby Kennedy, Matthews returns with a " +
+                            "gripping, in-depth, behind-the-scenes portrait of one of the great " +
+                            "figures of the American twentieth century." +
+                            "Overlooked by his father, and overshadowed by his war-hero brother, Bobby " +
+                            "Kennedy was the perpetual underdog. When he had the chance to become a " +
+                            "naval officer like Jack, Bobby turned it down, choosing instead to join " +
+                            "the Navy as a common sailor. It was a life changing experience that led " +
+                            "him to connect with voters from all walks of life: young or old, black or " +
+                            "white, rich or poor. They were the people who turned out for him in his " +
+                            "1968 campaign. RFK would prove himself to be the rarest of politicians—both " +
+                            "a pragmatist who knew how to get the job done and an unwavering idealist " +
+                            "who could inspire millions.",
+                         Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Chris_Matthews_2011_Shankbone.JPG/800px-Chris_Matthews_2011_Shankbone.JPG"
                      }
                );
                 context.SaveChanges();

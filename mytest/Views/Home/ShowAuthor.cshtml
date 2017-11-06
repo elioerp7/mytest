@@ -3,6 +3,8 @@
     @{
         ViewData["Title"] = "ShowAuthor";
         int count = 0;
+        var books = ViewBag.books;
+
     }
 
 <br />
@@ -66,6 +68,11 @@
                     </div>
                 }
                 count = 1;
+                foreach (Book b in books)
+                {
+                    <img src=@b.Image class="hvr-grow">
+
+                }
             }
         }
     </div>

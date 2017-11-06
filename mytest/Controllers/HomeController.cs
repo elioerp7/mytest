@@ -172,6 +172,9 @@ namespace mytest.Controllers
         public IActionResult ShowAuthor(string field)
         {
             getCartItems();
+            var books = _context.Books.Where(m => m.Author.ToLower().Equals(field.ToLower()));  //getting all the books written by that author
+            ViewBag.books = books;          //viewbag with all the books written by that author
+
             if (field == null)
                 return View();
             else
