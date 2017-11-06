@@ -8,9 +8,8 @@
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                
-                <a class="shoppingCart" id="Cart" title="ShoppingCart" style="margin-top:10px;background-size:30px; background-repeat: no-repeat;"> 
+            <li> 
+                <a class="shoppingCart" id="Cart" asp-controller="Home" asp-action="ShoppingCart" title="ShoppingCart" style="margin-top:10px;background-size:30px; background-repeat: no-repeat;"> 
                   <b class="circle" style="color:black; position:absolute">
                     
                     @if (@ViewBag.ItemsInCart > 99)
