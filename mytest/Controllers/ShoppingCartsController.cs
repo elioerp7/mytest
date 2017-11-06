@@ -27,6 +27,7 @@ namespace mytest.Controllers
             return View(await _context.MyShoppingCart.ToListAsync());
         }
 
+
         // GET: ShoppingCarts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
