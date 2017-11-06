@@ -77,8 +77,7 @@ namespace mytest.Controllers
             var userId = form["UserId"].ToString();
             var bookISBN = form["BookISBN"].ToString();
             var quantity = int.Parse(form["Quantity"]);
-
-           var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
+            var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
 
             ShoppingCart item = new ShoppingCart()
             {
