@@ -8,9 +8,10 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171106035650_NewFieldAdded2")]
+    partial class NewFieldAdded2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -171,14 +172,6 @@ namespace mytest.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<string>("ShiptoAdd");
-
-                    b.Property<string>("ShiptoCity");
-
-                    b.Property<string>("ShiptoState");
-
-                    b.Property<int>("ShiptoZip");
 
                     b.Property<bool>("TwoFactorEnabled");
 

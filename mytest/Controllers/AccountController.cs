@@ -8,6 +8,7 @@ using mytest.Models;
 using mytest.Models.AccountViewModels;
 using mytest.Services;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -51,6 +52,8 @@ namespace mytest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+
+
 
         //
         // POST: /Account/Login
@@ -110,7 +113,22 @@ namespace mytest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    CCnum = model.CCnum,
+                    BilltoAdd = model.BilltoAdd,
+                    BilltoCity = model.BilltoCity,
+                    BilltoState = model.BilltoState,
+                    BilltoZip = model.BilltoZip,
+                    ShiptoAdd = model.ShiptoAdd,
+                    ShiptoCity = model.ShiptoCity,
+                    ShiptoState = model.ShiptoState,
+                    ShiptoZip = model.ShiptoZip
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -130,6 +148,10 @@ namespace mytest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        
+
+
+
 
         //
         // POST: /Account/Logout
@@ -141,6 +163,11 @@ namespace mytest.Controllers
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+
+     
+    
+
 
         //
         // POST: /Account/ExternalLogin
@@ -441,6 +468,9 @@ namespace mytest.Controllers
             }
         }
 
+
+   
+
         //
         // GET /Account/AccessDenied
         [HttpGet]
@@ -472,5 +502,15 @@ namespace mytest.Controllers
         }
 
         #endregion
+    }
+
+    internal class HttpStatusCodeResult : ActionResult
+    {
+        private HttpStatusCode badRequest;
+
+        public HttpStatusCodeResult(HttpStatusCode badRequest)
+        {
+            this.badRequest = badRequest;
+        }
     }
 }
