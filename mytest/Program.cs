@@ -21,6 +21,7 @@ namespace mytest
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                SeedData.Initialize(services);
                 try
                 {
                     // Requires using MvcMovie.Models;
