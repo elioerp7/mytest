@@ -16,7 +16,7 @@ namespace mytest.Models
                 // Look for any Books.
                 if (context.Books.Any())
                 {
-                   //return;   // DB has been seeded
+                   return;   // DB has been seeded
                 }
                 foreach (Book b in context.Books)
                 {
@@ -276,7 +276,7 @@ namespace mytest.Models
                          " joins forces with Caine. But the sexy incubus has been keeping some major secrets from her—secrets that hold clues to" +
                          " her own history. And as Rosalind uncovers the truth about herself, she realizes she has to risk her sanity if she wants" +
                          " to save humanity.",
-                         Author = "C. N. Crawfors",
+                         Author = "C. N. Crawford",
                          Genre = "Fantasy",
                          Publisher = "CreateSpace Independent Publishing Platform",
                          Quantity = 20,
@@ -429,7 +429,7 @@ namespace mytest.Models
                          Description = "In this compelling, smart, and well-researched dual biography, " +
                          "Chris Matthews shows how the contest between the charismatic John F. Kennedy and " +
                          "the talented yet haunted Richard Nixon propelled America toward Vietnam and Watergate. John F. Kennedy and Richard Nixon each dreamed of becoming the great young leader of their age. First as friends, then as bitter enemies, they were linked by a historic rivalry that changed both them and their country. Fresh, entertaining, and revealing, Kennedy & Nixon reveals that the early fondness between the two men—Kennedy, for example, told a trusted friend that if he didn’t receive the Democratic nomination in 1960, he would vote for Nixon—degenerated into distrust and bitterness. Using White House tapes, this book exposes Richard Nixon’s dread of a Kennedy “restoration” in 1972 drove the dark deeds of Watergate.",
-                         Author = "Chris Matthew",
+                         Author = "Chris Matthews",
                          Genre = "Biographies & Memoirs",
                          Publisher = "Free Press",
                          Quantity = 900,
@@ -478,6 +478,7 @@ namespace mytest.Models
                          " two dogs, Bear and Beau.",
                          Image = "http://rjpalacio.com/uploads/2/9/3/1/2931329/121753.jpg?269"
                      },
+
                      new Author
                      {
                           Name = "Stieg Larsson",
@@ -496,6 +497,23 @@ namespace mytest.Models
                           "according to Publishers Weekly. By March 2015, his series had sold 80 million " +
                           "copies worldwide.",
                           Image = "https://www.biography.com/.image/t_share/MTE4MDAzNDEwODE2MzcwMTkw/stieg-larsson-17181752-1-402.jpg"
+                     },
+
+                     new Author
+                     {
+                         Name = "Antoine de Saint-Exupéry",
+                         DateofBirth = DateTime.Parse("07/29/1900"),
+                         DateofDeath = DateTime.Parse("07/31/1944"),
+                         BirthCity = "Lyon",
+                         BirthCountry = "Frances",
+                         Bio = "Antoine de Saint-Exupéry was born in Lyon, France, in 1900. Raised in an aristocratic family,"+
+                         "he took his first airplane ride at the age of 12 and immediately fell in love. He received his pilot’s " +
+                         "wings during his compulsory military service in 1922, around which time he also began to write. " + 
+                         "His adventures as a pilot would supply the inspiration for all of his literary endeavors, which " + 
+                         "culminated with the 1943 publication of the classic The Little Prince. Saint-Exupéry disappeared in " +
+                         "July 1944 while flying a reconnaissance mission over occupied France during World War II, leading to " + 
+                         "speculation over the cause of his death that persists to the present day.",
+                         Image = "https://charterforcompassion.org/images/menus/Peace_non_violence/saint-exupery.jpg"
                      },
                      new Author
                      {
@@ -565,7 +583,7 @@ namespace mytest.Models
                             "In 2005, Lev Grossman of Time called Martin the American Tolkien, and in " +
                             "2011, he was included on the annual Time 100 list of the most influential " +
                             "people in the world.",
-                         Image = "http://awoiaf.westeros.org/images/4/4b/George_R_R_Martin.jpg"
+                         Image = "https://photos.vanityfair.com/2015/01/21/54c03653eac9a2571a187323_george-rr-martin.jpg"
                      },
                      new Author
                      {
@@ -670,8 +688,8 @@ namespace mytest.Models
                          Name = "Chris Matthews",
                          DateofBirth = DateTime.Parse("12/17/1945"),
                          DateofDeath = null,
-                         BirthCity = "Philadelphia",
-                         BirthCountry = "Pennsylvania",
+                         BirthCity = "Philadelphia, PA",
+                         BirthCountry = "United States",
                          Bio = "A revealing new portrait of Robert F. Kennedy that gets closer to " +
                             "the man than any book before, by bestselling author Chris Matthews, an " +
                             "esteemed Kennedy expert and anchor of MSNBC’s Hardball." +
