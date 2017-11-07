@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<mytest.Models.ShoppingCart>
 
 @{
     ViewData["Title"] = "Index";
@@ -51,9 +51,8 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
                     <td class="actions" data-th="">
-                        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-                    </td>
+                        <a asp-action="Delete" asp-route-id="@item.ShoppingCartId">Delete</a>
+                </td>
                 </tr>
             </tbody>
             

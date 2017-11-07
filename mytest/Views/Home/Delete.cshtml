@@ -1,0 +1,42 @@
+@model mytest.Models.ShoppingCart
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to remove this Book from your shopping cart?</h3>
+<div>
+    <h4>ShoppingCart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="ShoppingCartId" />
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.BookISBN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookISBN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a href="~/Home/ShoppingCart">Back to your cart</a>
+        </div>
+    </form>
+</div>

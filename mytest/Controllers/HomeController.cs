@@ -218,5 +218,33 @@ namespace mytest.Controllers
             }
             ViewBag.ItemsInCart = ItemsInCart;
         }
+        // GET: ShoppingCarts/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var shoppingCart = await _context.MyShoppingCart
+                .SingleOrDefaultAsync(m => m.ShoppingCartId == id);
+            if (shoppingCart == null)
+            {
+                return NotFound();
+            }
+
+            return View(shoppingCart);
+        }
+
+        // POST: ShoppingCarts/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var shoppingCart = await _context.MyShoppingCart.SingleOrDefaultAsync(m => m.ShoppingCartId == id);
+            _context.MyShoppingCart.Remove(shoppingCart);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
