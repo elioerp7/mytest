@@ -8,7 +8,7 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171107005703_usersettings")]
+    [Migration("20171107011809_usersettings")]
     partial class usersettings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
