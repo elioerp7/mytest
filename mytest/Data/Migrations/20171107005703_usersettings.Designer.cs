@@ -8,8 +8,8 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171106032920_NewFieldAdded")]
-    partial class NewFieldAdded
+    [Migration("20171107005703_usersettings")]
+    partial class usersettings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,14 @@ namespace mytest.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("BilltoAdd");
+
+                    b.Property<string>("BilltoCity");
+
+                    b.Property<string>("BilltoState");
+
+                    b.Property<int>("BilltoZip");
+
                     b.Property<DateTime>("Birthdate");
 
                     b.Property<long>("CCnum");
@@ -164,6 +172,14 @@ namespace mytest.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("ShiptoAdd");
+
+                    b.Property<string>("ShiptoCity");
+
+                    b.Property<string>("ShiptoState");
+
+                    b.Property<int>("ShiptoZip");
 
                     b.Property<bool>("TwoFactorEnabled");
 
