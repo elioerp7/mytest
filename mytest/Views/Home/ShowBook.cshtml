@@ -30,7 +30,7 @@
             <div class="form-group">
                 <br />
                 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                {
+                { 
                     @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Book Name, Author, Genre or ISBN" })
                 }
             </div>
