@@ -711,6 +711,27 @@ namespace mytest.Models
                      }
                );
                 context.SaveChanges();
+
+                foreach (Book b in context.Books)
+                {
+                    var ratings = context.Comments.Where(d => d.BookISBN.Equals(b.ISBN)).ToList();
+                    int ratingSum;
+                    int ratingCount;
+                    ratingSum = ratings.Sum(d => d.Rating.Value);
+                    ratingCount = ratings.Count();
+
+                    var book = context.Books.Where(x => x.ISBN.Equals(b.ISBN)).FirstOrDefault<Book>();
+                    if(ratingCount!=0)
+                        book.Rating = ratingSum / ratingCount;
+                    else
+                    {
+                        book.Rating = 0;
+                    }
+
+                    context.Entry(book).State = EntityState.Modified;
+                    
+                }
+                context.SaveChanges();
             }
         }
     }
