@@ -46,7 +46,7 @@
                         </td>
                         <td data-th="Price">@mybook.Price</td>
                         <td data-th="Quantity">
-                            <input type="number" id="NewQuantity" onchange="getId()" class="form-control text-center" value=@item.Quantity>
+                            <input type="number" id="NewQuantity" o class="form-control text-center" value=@item.Quantity>
                         </td>
                         <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
                         <td class="actions" data-th="">
@@ -55,7 +55,7 @@
                             <a class="form-group">
                                 <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
                                 <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-                                <asp-action="" asp-route-id="@item.ShoppingCartId" id="Quantity" class="glyphicon glyphicon-refresh">
+                                <id="Quantity" name="Quantity" class="glyphicon glyphicon-refresh">
                             </a>
                         }
                                 <a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a>
@@ -76,9 +76,9 @@
     </div>
 
 <script>
-function getId() {
-    document.getElementById("Quantity").innerHTML =
-    document.getElementById("NewQuantity").value;
+    function getId() {
+        document.getElementById("Quantity").innerHTML =
+            document.getElementById("NewQuantity").values;
 }
 
 </script>
