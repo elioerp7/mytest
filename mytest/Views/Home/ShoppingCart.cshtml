@@ -8,7 +8,6 @@
     Book mybook = new Book();
     double total = 0.00;
 }
-
     <h2>Shopping Cart</h2>
     <br>
     <br>
@@ -47,13 +46,20 @@
                         </td>
                         <td data-th="Price">@mybook.Price</td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value=@item.Quantity>
+                            <input type="number" id="NewQuantity" onchange="getId()" class="form-control text-center" value=@item.Quantity>
                         </td>
                         <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
                         <td class="actions" data-th="">
-                            <a asp-action="" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-refresh"></a>
-                            <a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a>
-                        </td>
+                        @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post))
+                        {
+                            <a class="form-group">
+                                <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
+                                <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
+                                <asp-action="" asp-route-id="@item.ShoppingCartId" id="Quantity" class="glyphicon glyphicon-refresh">
+                            </a>
+                        }
+                                <a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a>
+</td>
                     </tr>
                 </tbody>
 
@@ -68,3 +74,11 @@
             </tr>
         </table>
     </div>
+
+<script>
+function getId() {
+    document.getElementById("Quantity").innerHTML =
+    document.getElementById("NewQuantity").value;
+}
+
+</script>

@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mytest.Data;
 using mytest.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
@@ -104,6 +101,32 @@ namespace mytest.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("ShowBook", "Home", new { field = bookISBN.ToString() });
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult UpdateQuantity(IFormCollection form)
+        {
+            var userId = form["UserId"].ToString();
+            var bookISBN = form["BookISBN"].ToString();
+            var quantity = int.Parse(form["Quantity"]);
+            var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
+            var cartItems = _context.MyShoppingCart.ToList();
+            foreach (ShoppingCart s in cartItems)
+            {
+                if (s.BookISBN.Equals(bookISBN))
+                {
+                    s.Quantity = quantity;
+                    s.Total = s.Quantity * book.Price;
+                    _context.Entry(s).State = EntityState.Modified;
+                    _context.SaveChanges();
+                    return RedirectToAction("ShoppingCart", "Home");
+                }
+            }
+
+            return RedirectToAction("ShoppingCart", "Home");
         }
 
 

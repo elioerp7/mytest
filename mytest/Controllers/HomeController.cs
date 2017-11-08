@@ -190,6 +190,7 @@ namespace mytest.Controllers
             var UserId = _userManager.GetUserId(User);
             var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
             ViewBag.userItems = listofcarts;
+            ViewBag.UserId = UserId;
             List<Book> booksInCart = new List<Book>();
 
             foreach (ShoppingCart s in listofcarts)
