@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using mytest.Data;
 using mytest.Models;
 using mytest.Models.ManageViewModels;
 using mytest.Services;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace mytest.Controllers
 {
@@ -22,6 +21,8 @@ namespace mytest.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly ApplicationDbContext _context;
+
 
         public ManageController(
           UserManager<ApplicationUser> userManager,
@@ -29,7 +30,8 @@ namespace mytest.Controllers
           IOptions<IdentityCookieOptions> identityCookieOptions,
           IEmailSender emailSender,
           ISmsSender smsSender,
-          ILoggerFactory loggerFactory)
+          ILoggerFactory loggerFactory,
+          ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -37,6 +39,8 @@ namespace mytest.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+            _context = context;
+
         }
 
         //
@@ -54,6 +58,7 @@ namespace mytest.Controllers
                 : "";
 
             var user = await GetCurrentUserAsync();
+            getCartItems();
             if (user == null)
             {
                 return View("Error");
@@ -213,6 +218,7 @@ namespace mytest.Controllers
         [HttpGet]
         public IActionResult ChangePassword()
         {
+            getCartItems();
             return View();
         }
 
@@ -222,6 +228,7 @@ namespace mytest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            getCartItems();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -340,7 +347,20 @@ namespace mytest.Controllers
             }
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
+        public void getCartItems()
+        {
+            //getting items in shopping cart
+            ViewBag.UserId = _userManager.GetUserId(User);
 
+            var UserId = _userManager.GetUserId(User);
+            var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
+            int ItemsInCart = 0;
+            foreach (ShoppingCart s in listofcarts)
+            {
+                ItemsInCart += s.Quantity;
+            }
+            ViewBag.ItemsInCart = ItemsInCart;
+        }
         #region Helpers
 
         private void AddErrors(IdentityResult result)
