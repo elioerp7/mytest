@@ -4,7 +4,6 @@
     ViewData["Title"] = "ShowAuthor";
     int count = 0;
     var books = ViewBag.books;
-
 }
 
 <br />
@@ -25,7 +24,7 @@
 </div>
 
 <div class="container">
-    
+
     @if (Model.Count() != 0)
     {
         @foreach (var item in Model)
@@ -35,7 +34,7 @@
                 <div class="row" style="padding-top:5px;">
                     <div class="col-md-6" style="text-align:center;">
                         <div class="hvr-forward">
-                            <img src=@item.Image style="height:450px;">
+                            <img id="myImg" src=@item.Image style="height:450px;">
                         </div>
                     </div>
 
@@ -48,16 +47,16 @@
                         <h4>
                             <font size="4">
                                 @if (item.DateofBirth != null)
-                                { 
+                                {
                                     @Convert.ToDateTime(item.DateofBirth).ToString("MMMM dd, yyyy")
                                 }
                                 @if (item.DateofDeath != null)
                                 {
-                                    @Convert.ToDateTime(item.DateofDeath).ToString("MMMM dd, yyyy")
+                                    <text> - @Convert.ToDateTime(item.DateofDeath).ToString("MMMM dd, yyyy")</text>
                                 }
                                 else
                                 {
-                                    <text>Present</text>
+                                    <text> - Present</text>
                                 }
                                 <br />
                             </font>
@@ -70,33 +69,69 @@
                     </div>
                 </div>
 
-    <div class="row" style="padding-top:5px;">
-                        <div class="col-md-12">
-                            <div class="tab">
-                                <button class="tablinks" onclick="openTab(event, 'Bio')" id="defaultOpen">Biography</button>
-                                <button class="tablinks" onclick="openTab(event, 'Rb')">Related Books</button>
-                            </div>
+                <div class="row" style="padding-top:5px;">
+                    <div class="col-md-12">
+                        <div class="tab">
+                            <button class="tablinks" onclick="openTab(event, 'Bio')" id="defaultOpen">Biography</button>
+                            <button class="tablinks" onclick="openTab(event, 'Rb')">Related Books</button>
                         </div>
-     </div>
+                    </div>
+                </div>
 
-         <div id="Bio" class="tabcontent">
-                        <i>@item.Bio</i>
-         </div>
+                <div id="Bio" class="tabcontent">
+                    <i>@item.Bio</i>
+                </div>
 
-              }
-                count = 1;
+            }
+            count = 1;
 
-         <div id="Rb" class="tabcontent">
-             <div style="text-align:center;">
+            <div id="Rb" class="tabcontent">
+                <div style="text-align:center;">
                     @foreach (Book b in books)
                     {
-                        <a href="../Home/ShowBook?field=@b.ISBN">
-                            <img src=@b.Image class="hvr-grow" style="width:180px;">
-                        </a>
+                        <div style="width:200px; text-align:center; display:inline-block; position:relative; vertical-align:top">
+                            <a href="../Home/ShowBook?field=@b.ISBN">
+                                <img src=@b.Image class="hvr-push" style="width:180px; height:270px;"><br />
+                                <div class="caption" style="padding-top:4px;">
+                                    <span class="rating" style="padding-left:1em;">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            string starClass = "";
+                                            if (i <= b.Rating)
+                                            {
+                                                starClass = "starGlowN";
+                                            }
+                                            else
+                                            {
+                                                starClass = "starFadeN";
+                                            }
 
-                     }
-             </div>
-          </div>
-         }
-     }
+                                            <span class="@starClass" style="background-size:15px; background-repeat: no-repeat;"></span>
+                                        }
+                                    </span><br />
+                                    <span style="font-size:14px;">@b.Title</span><br />
+                                    <span style="font-size:14px;">@Convert.ToDateTime(b.ReleaseDate).ToString("yyyy") - @b.Genre</span> <br />
+                                    <span style="color:red; font-size:14px;">
+                                        $@b.Price
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+<div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
 </div>

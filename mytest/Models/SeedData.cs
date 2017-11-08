@@ -16,7 +16,7 @@ namespace mytest.Models
                 // Look for any Books.
                 if (context.Books.Any())
                 {
-                   return;   // DB has been seeded
+                    return;   // DB has been seeded
                 }
                 foreach (Book b in context.Books)
                 {
@@ -481,12 +481,12 @@ namespace mytest.Models
 
                      new Author
                      {
-                          Name = "Stieg Larsson",
-                          DateofBirth = DateTime.Parse("08/15/1954"),
-                          DateofDeath = DateTime.Parse("09/11/2004"),
-                          BirthCity = "Umeå",
-                          BirthCountry = "Sweden",
-                          Bio = "Karl Stig-Erland Stieg Larsson(15 August 1954 – 9 November 2004) was " +                    
+                         Name = "Stieg Larsson",
+                         DateofBirth = DateTime.Parse("08/15/1954"),
+                         DateofDeath = DateTime.Parse("09/11/2004"),
+                         BirthCity = "Umeå",
+                         BirthCountry = "Sweden",
+                         Bio = "Karl Stig-Erland Stieg Larsson(15 August 1954 – 9 November 2004) was " +
                           "a Swedish journalist and writer.He is best known for writing the Millennium " +
                           "trilogy of crime novels, which were published posthumously and adapted as " +
                           "motion pictures.Larsson lived much of his life in Stockholm and worked there " +
@@ -496,7 +496,7 @@ namespace mytest.Models
                           "Hornets' Nest, became the most sold book in the United States in 2010, " +
                           "according to Publishers Weekly. By March 2015, his series had sold 80 million " +
                           "copies worldwide.",
-                          Image = "https://www.biography.com/.image/t_share/MTE4MDAzNDEwODE2MzcwMTkw/stieg-larsson-17181752-1-402.jpg"
+                         Image = "https://www.biography.com/.image/t_share/MTE4MDAzNDEwODE2MzcwMTkw/stieg-larsson-17181752-1-402.jpg"
                      },
 
                      new Author
@@ -506,12 +506,12 @@ namespace mytest.Models
                          DateofDeath = DateTime.Parse("07/31/1944"),
                          BirthCity = "Lyon",
                          BirthCountry = "Frances",
-                         Bio = "Antoine de Saint-Exupéry was born in Lyon, France, in 1900. Raised in an aristocratic family,"+
+                         Bio = "Antoine de Saint-Exupéry was born in Lyon, France, in 1900. Raised in an aristocratic family," +
                          "he took his first airplane ride at the age of 12 and immediately fell in love. He received his pilot’s " +
-                         "wings during his compulsory military service in 1922, around which time he also began to write. " + 
-                         "His adventures as a pilot would supply the inspiration for all of his literary endeavors, which " + 
+                         "wings during his compulsory military service in 1922, around which time he also began to write. " +
+                         "His adventures as a pilot would supply the inspiration for all of his literary endeavors, which " +
                          "culminated with the 1943 publication of the classic The Little Prince. Saint-Exupéry disappeared in " +
-                         "July 1944 while flying a reconnaissance mission over occupied France during World War II, leading to " + 
+                         "July 1944 while flying a reconnaissance mission over occupied France during World War II, leading to " +
                          "speculation over the cause of his death that persists to the present day.",
                          Image = "https://charterforcompassion.org/images/menus/Peace_non_violence/saint-exupery.jpg"
                      },
