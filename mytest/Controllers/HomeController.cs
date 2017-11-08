@@ -140,7 +140,23 @@ namespace mytest.Controllers
                 var UserId = _userManager.GetUserId(User);
                 ViewBag.bought = false;
 
+                var mybook = _context.Books.Where(b => b.ISBN.Equals(field)).FirstOrDefault<Book>();
+                List<Book> RelatedBooks = new List<Book>();
 
+                foreach (Book b in _context.Books)
+                {
+                    Book temp = new Book();
+                    if (!b.ISBN.Equals(mybook.ISBN) && (b.Author.Equals(mybook.Author) || b.Genre.Equals(mybook.Genre)))
+                    {
+                        temp = b;
+                    }
+                    if (temp == b)
+                    {
+                        RelatedBooks.Add(temp);
+                    }
+                }
+
+                ViewBag.RelatedBooks = RelatedBooks;
 
                 foreach (BookOwned bo in _context.BooksOwned)
                 {
