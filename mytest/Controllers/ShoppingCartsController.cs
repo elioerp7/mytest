@@ -116,7 +116,7 @@ namespace mytest.Controllers
             var cartItems = _context.MyShoppingCart.ToList();
             foreach (ShoppingCart s in cartItems)
             {
-                if (s.BookISBN.Equals(bookISBN))
+                if (s.BookISBN.Equals(bookISBN) && s.UserId.Equals(userId))
                 {
                     s.Quantity = quantity;
                     s.Total = s.Quantity * book.Price;
