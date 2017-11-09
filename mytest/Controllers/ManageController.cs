@@ -43,6 +43,9 @@ namespace mytest.Controllers
 
         }
 
+
+
+
         //
         // GET: /Manage/Index
         [HttpGet]
@@ -248,6 +251,50 @@ namespace mytest.Controllers
             }
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
+
+
+
+
+        //
+        // GET: /Manage/AccountInfo
+        [HttpGet]
+        public IActionResult AccountInfo()
+        {
+            return View();
+        }
+
+
+
+      //
+      // POST: /Manage/AccountInfo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AccountInfo(AccountInformationViewModel model)
+        {
+            
+            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+        }
+        /*
+            UserName = model.UserName,
+            Email = model.Email,
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            CCnum = model.CCnum,
+            BilltoAdd = model.BilltoAdd,
+            BilltoCity = model.BilltoCity,
+            BilltoState = model.BilltoState,
+            BilltoZip = model.BilltoZip,
+            ShiptoAdd = model.ShiptoAdd,
+            ShiptoCity = model.ShiptoCity,
+            ShiptoState = model.ShiptoState,
+            ShiptoZip = model.ShiptoZip
+            http://localhost:58569/Account/Information
+
+             */
+
+
+
+
 
         //
         // GET: /Manage/SetPassword

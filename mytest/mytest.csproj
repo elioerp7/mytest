@@ -12,6 +12,14 @@
     <UserSecretsId>aspnet-mytest-44e0f341-52ef-4df9-b3af-b865f8bde1d2</UserSecretsId>
     <StartupObject>mytest.Program</StartupObject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\AccountViewModels\ManageViewModels\ValuesController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Manage\Index1.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />

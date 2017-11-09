@@ -1,0 +1,131 @@
+﻿@model AccountInformationViewModel
+@{
+    ViewData["Title"] = "Account Information:";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+
+
+<form asp-controller="Manage" asp-action="AccountInfo" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <h4>Account Informations:.</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+
+    
+    
+
+
+    <div class="form-group">
+        <label asp-for="BilltoAdd" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="BilltoAdd" class="form-control" />
+            <span asp-validation-for="BilltoAdd" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BilltoCity" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="BilltoCity" class="form-control" />
+            <span asp-validation-for="BilltoCity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BilltoState" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="BilltoState" class="form-control" />
+            <span asp-validation-for="BilltoState" class="text-danger"></span>
+        </div>
+    </div>
+
+    
+
+
+    <div class="form-group">
+        <label asp-for="ShiptoAdd" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ShiptoAdd" class="form-control" />
+            <span asp-validation-for="ShiptoAdd" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ShiptoCity" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ShiptoCity" class="form-control" />
+            <span asp-validation-for="ShiptoCity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ShiptoState" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ShiptoState" class="form-control" />
+            <span asp-validation-for="ShiptoState" class="text-danger"></span>
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Update</button>
+
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
