@@ -60,9 +60,6 @@ namespace mytest.Models.AccountViewModels
         public int BilltoZip { get; set; }
 
 
-
-
-
         [Required]
         [StringLength(100, ErrorMessage = "Please enter your Bill to Address.", MinimumLength = 1)]
         [DataType(DataType.Text)]

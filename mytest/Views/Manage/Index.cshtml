@@ -79,9 +79,42 @@
             <dd>
                 @if (Model.HasPassword)
             {
-                    <a asp-controller="Manage" asp-action="AccountInfo" class="btn-bracketed">Update</a>
+                    <a asp-controller="Manage" asp-action="AccountInfo" class="zzzbtn-bracketed">Update</a>
                 }
 
 
-        </dl>
+             
+
+
+    
+
+            <dt>Add Credit Card:</dt>
+            <dd>
+                 @if (Model.HasPassword)
+            {
+            <a asp-controller="Manage" asp-action="AddCreditCard" class="zzzbtn-bracketed">Add</a>
+                 }
+
+
+       
+
+
+            <dt>Add Shipping Address:</dt>
+             <dd>
+                 @if (Model.HasPassword)
+            {
+            <a asp-controller="Manage" asp-action="AddNewAddress" class="zzzbtn-bracketed">Add</a>
+                }
+
+
+             </dl>
+
+
+
+
+
+
+    </dd>
+
+
 </div>

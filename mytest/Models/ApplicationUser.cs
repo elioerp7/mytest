@@ -28,6 +28,10 @@ namespace mytest.Models
         public string ShiptoCity { get; set; }
         public int ShiptoZip { get; set; }
 
+    
+
+
+
 
     }
 }

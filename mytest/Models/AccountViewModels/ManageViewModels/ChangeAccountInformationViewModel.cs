@@ -12,31 +12,21 @@ namespace mytest.Models.ManageViewModels
     public class AccountInformationViewModel
     {
         
-        public string FirstName { get; set; }
+        public string NewFirstName { get; set; }
 
-        public string LastName { get; set; }
+        public string NewLastName { get; set; }
 
 
       
         [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        public string NewUserName { get; set; }
 
      
         [EmailAddress]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string NewEmail { get; set; }
 
       
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-
 
       
 
@@ -44,45 +34,59 @@ namespace mytest.Models.ManageViewModels
         [StringLength(100, ErrorMessage = "Please enter your Bill to Address.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Bill To Address:")]
-        public string BilltoAdd { get; set; }
+        public string NewBilltoAdd { get; set; }
 
        
         [StringLength(100, ErrorMessage = "Please enter a city.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "City:")]
-        public string BilltoCity { get; set; }
+        public string NewBilltoCity { get; set; }
 
        
         [StringLength(100, ErrorMessage = "Please enter a state.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "State:")]
-        public string BilltoState { get; set; }
+        public string NewBilltoState { get; set; }
 
-       
+        
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Zip:")]
+        public string NewBilltoZip { get; set; }
 
 
 
 
-      
+
+
         [StringLength(100, ErrorMessage = "Please enter your Bill to Address.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Ship To Address:")]
-        public string ShiptoAdd { get; set; }
+        public string NewShiptoAdd { get; set; }
 
        
         [StringLength(100, ErrorMessage = "Please enter a city.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "City:")]
-        public string ShiptoCity { get; set; }
+        public string NewShiptoCity { get; set; }
 
       
         [StringLength(100, ErrorMessage = "Please enter a state.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "State:")]
-        public string ShiptoState { get; set; }
+        public string NewShiptoState { get; set; }
 
-        
-        
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Zip:")]
+        public string NewShiptoZip { get; set; }
+
+
+
+        [DataType(DataType.CreditCard)]
+        [Display(Name = "Credit Card:")]
+        public string NewCreditCard { get; set; }
+
+
+
 
 
 

@@ -58,6 +58,9 @@ namespace mytest.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ProfileUpdate ? "Your phone profile has been updated."
+                : message == ManageMessageId.AddCreditCardSucess ? "Your credit card has been updated."
+                : message == ManageMessageId.AddAddressSucess ? "Your address has been updated."
                 : "";
 
             var user = await GetCurrentUserAsync();
@@ -265,14 +268,44 @@ namespace mytest.Controllers
 
 
 
-      //
-      // POST: /Manage/AccountInfo
+        //
+        // POST: /Manage/AccountInfo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AccountInfo(AccountInformationViewModel model)
         {
-            
+
+         
+            var user = await GetCurrentUserAsync();
+            /*
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            */
+           
+            getCartItems();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+          
+            if (user != null)
+            {
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    user.FirstName = model.NewFirstName;
+                    user.LastName = model.NewLastName;
+
+                    _logger.LogInformation(3, "User updated profile successfully.");
+                    return RedirectToAction(nameof(Index), new { Message = ManageMessageId.ProfileUpdate });
+                }
+                AddErrors(result);
+                return View(model);
+            }
+
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+
         }
         /*
             UserName = model.UserName,
@@ -291,6 +324,123 @@ namespace mytest.Controllers
             http://localhost:58569/Account/Information
 
              */
+
+
+
+
+        //
+        // GET: /Manage/AddCreditCard
+        [HttpGet]
+        public IActionResult AddCreditCard()
+        {
+            return View();
+        }
+
+
+
+        //
+        // POST: /Manage/AddCreditCard
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddCreditCard(AccountInformationViewModel model)
+        {
+
+
+            var user = await GetCurrentUserAsync();
+            /*
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            */
+
+            getCartItems();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (user != null)
+            {
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    user.BilltoAdd = model.NewBilltoAdd;
+                    user.BilltoCity = model.NewBilltoCity;
+                    user.BilltoState = model.NewBilltoState;
+
+
+                    _logger.LogInformation(3, "User updated profile successfully.");
+                    return RedirectToAction(nameof(Index), new { Message = ManageMessageId.AddCreditCardSucess });
+                }
+                AddErrors(result);
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+
+        }
+
+
+
+
+
+
+
+
+
+        //
+        // GET: /Manage/AddNewAddress
+        [HttpGet]
+        public IActionResult AddNewAddress()
+        {
+            return View();
+        }
+
+
+
+        //
+        // POST: /Manage/AddNewAddress
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddNewAddress(AccountInformationViewModel model)
+        {
+
+
+            var user = await GetCurrentUserAsync();
+            /*
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            */
+
+            getCartItems();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (user != null)
+            {
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    user.ShiptoAdd = model.NewShiptoAdd;
+                    user.ShiptoCity = model.NewShiptoCity;
+                    user.ShiptoState = model.NewShiptoState;
+                    
+
+                    _logger.LogInformation(3, "User updated profile successfully.");
+                    return RedirectToAction(nameof(Index), new { Message = ManageMessageId.AddAddressSucess });
+                }
+                AddErrors(result);
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+
+        }
+
+
 
 
 
@@ -427,7 +577,10 @@ namespace mytest.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            ProfileUpdate,
+            AddAddressSucess,
+            AddCreditCardSucess
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync()
