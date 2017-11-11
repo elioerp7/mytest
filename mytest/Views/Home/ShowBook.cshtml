@@ -196,8 +196,10 @@
     <br />
     <br />
     <div>
-
-        @Html.Partial("CommentBox")
+        @if (bought)
+         {
+            @Html.Partial("CommentBox")
+         }
     </div>
 
     <script>
