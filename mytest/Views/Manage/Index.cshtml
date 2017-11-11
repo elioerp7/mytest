@@ -28,11 +28,17 @@
                     <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
                 }
             </dd>
-            <dt>External Logins:</dt>
-            <dd>
+            
 
-                @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
-            </dd>
+            @*
+    <dt>External Logins:</dt>
+    <dd>
+
+        @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
+    </dd>
+            
+
+            
             <dt>Phone Number:</dt>
             <dd>
                 <p>
@@ -40,7 +46,9 @@
                     See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
                     for details on setting up this ASP.NET application to support two-factor authentication using SMS.
                 </p>
-                @*@(Model.PhoneNumber ?? "None")
+
+
+               (Model.PhoneNumber ?? "None")
                     @if (Model.PhoneNumber != null)
                     {
                         <br />
@@ -52,16 +60,18 @@
                     else
                     {
                         <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
-                    }*@
+                    }
             </dd>
 
+                *@
+            @*
             <dt>Two-Factor Authentication:</dt>
             <dd>
                 <p>
                     There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
                     for setting up this application to support two-factor authentication.
                 </p>
-                @*@if (Model.TwoFactor)
+               @if (Model.TwoFactor)
                     {
                         <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
                             Enabled <button type="submit" class="btn-link btn-bracketed">Disable</button>
@@ -72,14 +82,16 @@
                         <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
                             <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
                         </form>
-                    }*@
+                    }
             </dd>
+                *@
+
 
             <dt>Change Account Information:</dt>
             <dd>
                 @if (Model.HasPassword)
             {
-                    <a asp-controller="Manage" asp-action="AccountInfo" class="zzzbtn-bracketed">Update</a>
+                    <a asp-controller="Manage" asp-action="AccountInfo" class="btn-bracketed">Update</a>
                 }
 
 
@@ -92,7 +104,7 @@
             <dd>
                  @if (Model.HasPassword)
             {
-            <a asp-controller="Manage" asp-action="AddCreditCard" class="zzzbtn-bracketed">Add</a>
+            <a asp-controller="Manage" asp-action="AddCreditCard" class="btn-bracketed">Add</a>
                  }
 
 
@@ -103,7 +115,7 @@
              <dd>
                  @if (Model.HasPassword)
             {
-            <a asp-controller="Manage" asp-action="AddNewAddress" class="zzzbtn-bracketed">Add</a>
+            <a asp-controller="Manage" asp-action="AddNewAddress" class="btn-bracketed">Add</a>
                 }
 
 

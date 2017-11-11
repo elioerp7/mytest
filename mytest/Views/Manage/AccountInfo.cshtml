@@ -81,6 +81,13 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label asp-for="NewBilltoZip" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="NewBilltoZip" class="form-control" />
+            <span asp-validation-for="NewBilltoZip" class="text-danger"></span>
+        </div>
+    </div>
     
 
 
@@ -105,6 +112,16 @@
         <div class="col-md-10">
             <input asp-for="NewShiptoState" class="form-control" />
             <span asp-validation-for="NewShiptoState" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="NewShiptoZip" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="NewShiptoZip" class="form-control" />
+            <span asp-validation-for="NewShiptoZip" class="text-danger"></span>
         </div>
     </div>
 
