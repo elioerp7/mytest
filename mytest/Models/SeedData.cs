@@ -51,7 +51,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("05/01/1993"),
                          Rating = 0,
-                         Sold = 10
+                         Sold = 0
 
                      },
                      new Book
@@ -76,7 +76,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("04/06/1943"),
                          Rating = 0,
-                         Sold = 11
+                         Sold = 0
                      },
                      new Book
                      {
@@ -99,7 +99,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/01/2005"),
                          Rating = 0,
-                         Sold = 10
+                         Sold = 0
 
                      },
                      new Book
@@ -118,7 +118,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/30/2016"),
                          Rating = 0,
-                         Sold = 5
+                         Sold = 0
                      },
                      new Book
                      {
@@ -141,7 +141,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("06/26/1997"),
                          Rating = 0,
-                         Sold = 12
+                         Sold = 0
                      },
                      new Book
                      {
@@ -161,7 +161,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/20/1955"),
                          Rating = 0,
-                         Sold = 13
+                         Sold = 0
                      },
                      new Book
                      {
@@ -182,7 +182,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("11/11/1954"),
                          Rating = 0,
-                         Sold = 16
+                         Sold = 0
                      },
                      new Book
                      {
@@ -202,7 +202,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("07/29/1954"),
                          Rating = 0,
-                         Sold = 19
+                         Sold = 0
                      },
                      new Book
                      {
@@ -221,7 +221,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/01/1996"),
                          Rating = 0,
-                         Sold = 20
+                         Sold = 0
                      },
                      new Book
                      {
@@ -243,7 +243,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/01/1996"),
                          Rating = 0,
-                         Sold = 29
+                         Sold = 0
                      },
                      new Book
                      {
@@ -264,7 +264,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("01/01/1981"),
                          Rating = 0,
-                         Sold = 100
+                         Sold = 0
                      },
                      new Book
                      {
@@ -284,7 +284,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("03/07/2017"),
                          Rating = 0,
-                         Sold = 8
+                         Sold = 0
                      },
                      new Book
                      {
@@ -302,7 +302,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/03/2017"),
                          Rating = 0,
-                         Sold = 18
+                         Sold = 0
                      },
                      new Book
                      {
@@ -320,7 +320,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/06/2015"),
                          Rating = 0,
-                         Sold = 600
+                         Sold = 0
                      },
                      new Book
                      {
@@ -353,7 +353,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("10/31/2017"),
                          Rating = 0,
-                         Sold = 101
+                         Sold = 0
                      },
                      new Book
                      {
@@ -370,7 +370,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("02/14/2012"),
                          Rating = 0,
-                         Sold = 1
+                         Sold = 0
                      },
                      new Book
                      {
@@ -386,7 +386,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/18/2015"),
                          Rating = 0,
-                         Sold = 89
+                         Sold = 0
                      },
                      new Book
                      {
@@ -418,7 +418,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("08/30/2016"),
                          Rating = 0,
-                         Sold = 1000
+                         Sold = 0
                      }
                      ,
                      new Book
@@ -437,7 +437,7 @@ namespace mytest.Models
                          IsFeatured = 1,
                          ReleaseDate = DateTime.Parse("11/01/2011"),
                          Rating = 0,
-                         Sold = 20
+                         Sold = 0
                      }
 
 
