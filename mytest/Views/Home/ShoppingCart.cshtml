@@ -4,7 +4,6 @@
     ViewData["Title"] = "Index";
     var userItems = ViewBag.userItems;
     var booksInCart = ViewBag.booksInCart;
-    var image = "";
     Book mybook = new Book();
     double total = 0.00;
 }
@@ -18,7 +17,6 @@
         {
             if (b.ISBN.Equals(@item.BookISBN))
             {
-                image = b.Image;
                 mybook = b;
             }
         }
@@ -51,7 +49,8 @@
                         </td>
                         <td data-th="Price">@mybook.Price</td>
                         <td data-th="Quantity">
-                            <input type="number" min="1" id="Quantity" name="Quantity" class="form-control text-center" value=@item.Quantity>
+                            <input type="number" required min="1" max="@mybook.Quantity" id="Quantity" name="Quantity" class="form-control text-center" value=@item.Quantity>
+                            <span class="validity"></span>
                         </td>
                         <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
                         <td class="actions" data-th="">
@@ -62,7 +61,7 @@
                                 <button type="submit"><span class="glyphicon glyphicon-refresh"></span></button> 
                            
                   
-                                <button type="button"><a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a></button>
+                                <button type="button"><asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></button>
                         </td>
                 }
                     </tr>
