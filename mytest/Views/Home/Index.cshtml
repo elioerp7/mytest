@@ -17,14 +17,33 @@
         <div class="dropdown">
             <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Sort by <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Author", "Index", new { sort = ViewBag.AuthorSort })</li>
-                <li>@Html.ActionLink("Title", "Index", new { sort = ViewBag.TitleSort })</li>
-                <li>@Html.ActionLink("Price (Low to High)", "Index", new { sort = ViewBag.PriceSortLH })</li>
-                <li>@Html.ActionLink("Price (High to Low)", "Index", new { sort = ViewBag.PriceSortHL })</li>
-                <li>@Html.ActionLink("Release Date", "Index", new { sort = ViewBag.ReleaseSort })</li>
-                <li>@Html.ActionLink("Release Date (Most Recent)", "Index", new { sort = ViewBag.ReleaseSortM })</li>
-                <li>@Html.ActionLink("Top Sellers", "Index", new { sort = ViewBag.TopSort })</li>
-                <li>@Html.ActionLink("Best Rated", "Index", new { sort = ViewBag.BestSort })</li>
+                <li> 
+                <a asp-action="Index" asp-route-sort="@ViewData["AuthorSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Author </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["TitleSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["PriceSortLH"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price (Low to High) </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["PriceSortHL"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price (High to Low) </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["ReleaseSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Release Date </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["ReleaseSortM"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Release Date (Most Recent) </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["TopSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]"> Top Sellers</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-route-sort="@ViewData["BestSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]"> Best Rated</a>
+                </li>
+                
+        
+
             </ul>
             <div class="dropdown">
                 <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Results per page <span class="caret"></span></a>
@@ -33,7 +52,7 @@
                     <li>@Html.ActionLink("20", "Index", new { pageSize = ViewBag.PageSize20 })</li>
 
                 </ul>
-
+              
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
 
@@ -113,21 +132,21 @@
 
     <i style="padding-left:33em">
         <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-sort="@ViewData["CurrentSort"]"
            asp-route-page="@(Model.PageIndex - 1)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
            class="btn btn-default @prevDisabled">
             Previous
         </a>
         <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-sort="@ViewData["CurrentSort"]"
            asp-route-page="@(Model.FirstIndex)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
            class="text-uppercase">
             @Model.FirstIndex
         </a> ...
         <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-sort="@ViewData["CurrentSort"]"
            asp-route-page="@(Model.TotalPages)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
            class="text-uppercase">
@@ -135,10 +154,11 @@
         </a>
 
         <a asp-action="Index"
-           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-sort="@ViewData["CurrentSort"]"
            asp-route-page="@(Model.PageIndex + 1)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
            class="btn btn-default @nextDisabled">
             Next
         </a>
     </i>
+

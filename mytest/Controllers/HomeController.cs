@@ -102,9 +102,9 @@ namespace mytest.Controllers
             
             getCartItems();
 
-            
 
 
+           
             return View(await GeekTextBooks.PaginatedList<Book>.CreateAsync(books.AsNoTracking(), page ?? 1, sizePage));
 
         }
