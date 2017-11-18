@@ -1,52 +1,113 @@
+@model IEnumerable<mytest.Models.ShoppingCart>
 @{
     ViewData["Title"] = "CardInfo";
-    var user = ViewBag.user;
-    var date = ViewBag.date;
+    var userItems = ViewBag.userItems;
+    var booksInCart = ViewBag.booksInCart;
+    Book mybook = new Book();
+    double total = 0.00;
 }
 
 <div class="container">
     <div class="row">
         <!-- You can make it whatever width you want. I'm making it full width
         on <= small devices and 4/12 page width on >= medium devices -->
-
+        <div class="col-lg-4">
             <div class="checkout">
-                <form>
-                    <div class="card">
-                        <div class="front side">
-                            <span class="company">
-                                CARD
-                            </span>
-                            PAYMENT CARD
-                            <input type="number" value="@user.CCnum" class="cc-num" maxlength="16" min="" />
-                            <div>
-                                Expires:
-                                <input id="month" type="month" name="month"
-                                       min=@date required>
-                                <span class="validity"></span>/>
-                            </div>
-                            <div>
-                                CVC:
-                                <input type="text" placeholder="000" class="cc-cvc" maxlength="3" />
-                            </div>
+                <div class="card">
+                    <div class="front side">
+                        <span class="company">
+                            CARD
+                        </span>
+                        PAYMENT CARD
+                        <input type="text" placeholder="Card number" class="cc-num" />
+                        <div>
+                            Expires:
+                            <input type="text" placeholder="MM/YY" class="cc-exp" maxlength="4" />
+                        </div>
+                        <div>
+                            CVC:
+                            <input type="text" placeholder="000" class="cc-cvc" maxlength="3" />
                         </div>
                     </div>
-                    <br />
-                    <br />
-
-                    <p>Now, where to send it?</p>
-                    <div class="addr">
-                        <input type="text" placeholder="Address Line 1" />
-                        <input type="text" placeholder="Address Line 2" />
-                        <input type="text" placeholder="Town" />
-                        <input type="text" placeholder="Postcode" />
-                        <input type="text" placeholder="Country" />
+                    <div class="back side">
+                        <div class="stripe"></div>
+                        <div class="signature">
+                            <span class="right">
+                                CVC: <input type="text" placeholder="000" class="cc-cvc" maxlength="4" />
+                            </span>
+                            <span class="sig">
+                                our lovely customer
+                            </span>
+                        </div>
                     </div>
-                    <div class="btn btn-success btn-lg btn-block">
-                        Continue
-                    </div>
-                    <input type="submit" value="Submit form">
+                </div>
+                <br />
+                <br />
 
-                </form>
+                <p>Now, where to send it?</p>
+                <div class="addr">
+                    <input type="text" placeholder="Address Line 1" />
+                    <input type="text" placeholder="Address Line 2" />
+                    <input type="text" placeholder="Town" />
+                    <input type="text" placeholder="Postcode" />
+                    <input type="text" placeholder="Country" />
+                </div>
+                <div class="btn btn-success btn-lg btn-block">
+                    Continue
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="col-lg-8">
+            <table id="cart" class="table table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:75%">Books</th>
+                        <th style="width:8%">Price</th>
+                        <th style="width:5%">Qty</th>
+                        <th style="width:12%">Subtotal</th>
+                    </tr>
+                </thead>
+                @foreach (var item in @userItems)
+                {
+                    total += item.Total;
+                    foreach (Book b in booksInCart)
+                    {
+                        if (b.ISBN.Equals(@item.BookISBN))
+                        {
+                            mybook = b;
+                        }
+                    }
+
+                    <tbody>
+                        <tr>
+                            @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post))
+                {
+                                <td data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                                <h4 class="nomargin">@mybook.Title</h4>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-th="Price">$@mybook.Price</td>
+                                <td data-th="Quantity">@(@item.Quantity)</td>
+                                <td data-th="Subtotal">$@(@mybook.Price * @item.Quantity)</td>
+                                    
+                            }
+                        </tr>
+                    </tbody>
+
+
+                }
+            </table>
+                <table id="cart" class="table table-hover table-condensed">
+                    <tr>
+                        
+                        <td class="hidden-xs text-right"><strong class="fa fa-angle-right">Total $@total    </strong></td>
+                    </tr>
+                </table>
+
+        </div>
+     </div>
 </div>

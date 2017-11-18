@@ -1,12 +1,6 @@
 @model IEnumerable<mytest.Models.ShoppingCart>
     @{
         ViewData["Title"] = "Checkout";
-        var userItems = ViewBag.userItems;
-        var booksInCart = ViewBag.booksInCart;
-        Book mybook = new Book();
-        double total = 0.00;
-        var user = ViewBag.user;
-        var date = ViewBag.date;
     }
     <h2>Checkout</h2>
     <br>
@@ -15,73 +9,7 @@
 
     @Html.Partial("CardInfo");
 
-    @foreach (var item in @userItems)
-    {
-        total += item.Total;
-        foreach (Book b in booksInCart)
-        {
-            if (b.ISBN.Equals(@item.BookISBN))
-            {
-                mybook = b;
-            }
-        }
-        <div class="container">
-            <table id="cart" class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width:50%">Product</th>
-                        <th style="width:10%">Price</th>
-                        <th style="width:8%">Quantity</th>
-                        <th style="width:22%" class="text-center">Subtotal</th>
-                        <th style="width:10%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post))
-                {
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <a href="../Home/ShowBook?field=@mybook.ISBN">
-                                            <h4 class="nomargin">@mybook.Title</h4>
-                                        </a>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">@mybook.Price</td>
-                            <td data-th="Quantity">
-                                <input type="number" required min="1" max="@mybook.Quantity" id="Quantity" name="Quantity" class="form-control text-center" value=@item.Quantity>
-                                <span class="validity"></span>
-                            </td>
-                            <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
-                            <td class="actions" data-th="">
-
-
-                                <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
-                                <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-                                <button type="submit"><span class="glyphicon glyphicon-refresh"></span></button>
-
-
-                                <button type="button"><asp-action ="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></button>
-                            </td>
-                        }
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-    }
-    <div class="container">
-        <table id="cart" class="table table-hover table-condensed">
-            <tr>
-                <td><a href="~/Home/Index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                <td class="hidden-xs text-right"><strong class="fa fa-angle-right">Total $@total    </strong><a href="#" class="btn btn-success">Checkout <i class="fa fa-angle-right"></i></a></td>
-            </tr>
-        </table>
-    </div>
-
+    
 
 
 
