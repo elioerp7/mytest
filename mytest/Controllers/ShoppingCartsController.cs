@@ -208,7 +208,7 @@ namespace mytest.Controllers
             var shoppingCart = await _context.MyShoppingCart.SingleOrDefaultAsync(m => m.ShoppingCartId == id);
             _context.MyShoppingCart.Remove(shoppingCart);
             await _context.SaveChangesAsync();
-            return RedirectToAction("ShoppingCart");
+            return RedirectToAction("Index");
         }
 
         private bool ShoppingCartExists(int id)

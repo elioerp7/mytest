@@ -1,0 +1,53 @@
+
+@{
+    ViewData["Title"] = "CardInfo";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- You can make it whatever width you want. I'm making it full width
+        on <= small devices and 4/12 page width on >= medium devices -->
+
+            <div class="checkout">
+                <h1>Checkout</h1>
+                <div class="card">
+                    <div class="front side">
+                        <span class="company">
+                            CARD
+                        </span>
+                        PAYMENT CARD
+                        <input type="text" placeholder="Card number" class="cc-num" />
+                        <div>
+                            Expires:
+                            <input type="text" placeholder="MM/YY" class="cc-exp" />
+                        </div>
+                    </div>
+                    <div class="back side">
+                        <div class="stripe"></div>
+                        <div class="signature">
+                            <span class="right">
+                                CVC: <input type="text" placeholder="000" class="cc-cvc" maxlength="4" />
+                            </span>
+                            <span class="sig">
+                                our lovely customer
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="button flip">
+                    Flip over
+                </div>
+                <p>Now, where to send it?</p>
+                <div class="addr">
+                    <input type="text" placeholder="Address Line 1" />
+                    <input type="text" placeholder="Address Line 2" />
+                    <input type="text" placeholder="Town" />
+                    <input type="text" placeholder="Postcode" />
+                    <input type="text" placeholder="Country" />
+                </div>
+                <div class="btn btn-success btn-lg btn-block">
+                    Continue
+                </div>
+        </div>
+    </div>
+</div>
