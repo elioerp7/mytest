@@ -268,7 +268,11 @@ namespace mytest.Controllers
         public async Task<IActionResult> Checkout()
         {
             getCartItems();
+            
             var UserId = _userManager.GetUserId(User);
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == UserId);
+            ViewBag.user = user;
+            ViewBag.date = DateTime.Now.ToString("yyyy-MM"); ;
             var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
             ViewBag.userItems = listofcarts;
             ViewBag.UserId = UserId;

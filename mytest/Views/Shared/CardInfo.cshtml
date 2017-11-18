@@ -1,5 +1,7 @@
 @{
     ViewData["Title"] = "CardInfo";
+    var user = ViewBag.user;
+    var date = ViewBag.date;
 }
 
 <div class="container">
@@ -8,48 +10,43 @@
         on <= small devices and 4/12 page width on >= medium devices -->
 
             <div class="checkout">
-                <div class="card">
-                    <div class="front side">
-                        <span class="company">
-                            CARD
-                        </span>
-                        PAYMENT CARD
-                        <input type="text" placeholder="Card number" class="cc-num" />
-                        <div>
-                            Expires:
-                            <input type="text" placeholder="MM/YY" class="cc-exp" maxlength="4"/>
-                        </div>
-                        <div>
-                            CVC:
-                            <input type="text" placeholder="000" class="cc-cvc" maxlength="3" />
+                <form>
+                    <div class="card">
+                        <div class="front side">
+                            <span class="company">
+                                CARD
+                            </span>
+                            PAYMENT CARD
+                            <input type="number" value="@user.CCnum" class="cc-num" maxlength="16" min="" />
+                            <div>
+                                Expires:
+                                <input id="month" type="month" name="month"
+                                       min=@date required>
+                                <span class="validity"></span>/>
+                            </div>
+                            <div>
+                                CVC:
+                                <input type="text" placeholder="000" class="cc-cvc" maxlength="3" />
+                            </div>
                         </div>
                     </div>
-                    <div class="back side">
-                        <div class="stripe"></div>
-                        <div class="signature">
-                            <span class="right">
-                                CVC: <input type="text" placeholder="000" class="cc-cvc" maxlength="4" />
-                            </span>
-                            <span class="sig">
-                                our lovely customer
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-                <br/>
+                    <br />
+                    <br />
 
-                <p>Now, where to send it?</p>
-                <div class="addr">
-                    <input type="text" placeholder="Address Line 1" />
-                    <input type="text" placeholder="Address Line 2" />
-                    <input type="text" placeholder="Town" />
-                    <input type="text" placeholder="Postcode" />
-                    <input type="text" placeholder="Country" />
-                </div>
-                <div class="btn btn-success btn-lg btn-block">
-                    Continue
-                </div>
+                    <p>Now, where to send it?</p>
+                    <div class="addr">
+                        <input type="text" placeholder="Address Line 1" />
+                        <input type="text" placeholder="Address Line 2" />
+                        <input type="text" placeholder="Town" />
+                        <input type="text" placeholder="Postcode" />
+                        <input type="text" placeholder="Country" />
+                    </div>
+                    <div class="btn btn-success btn-lg btn-block">
+                        Continue
+                    </div>
+                    <input type="submit" value="Submit form">
+
+                </form>
         </div>
     </div>
 </div>
