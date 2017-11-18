@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<mytest.Models.ShoppingCart>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ShoppingCart";
     var userItems = ViewBag.userItems;
     var booksInCart = ViewBag.booksInCart;
     Book mybook = new Book();
@@ -61,7 +61,7 @@
                                 <button type="submit"><span class="glyphicon glyphicon-refresh"></span></button> 
                            
                   
-                                <button type="button"><asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></button>
+                                <button type="button"><a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a></button>
                         </td>
                 }
                     </tr>
@@ -74,7 +74,7 @@
         <table id="cart" class="table table-hover table-condensed">
             <tr>
                 <td><a href="~/Home/Index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                <td class="hidden-xs text-right"><strong class="fa fa-angle-right">Total $@total    </strong><a href="#" class="btn btn-success">Checkout <i class="fa fa-angle-right"></i></a></td>
+                <td class="hidden-xs text-right"><strong class="fa fa-angle-right">Total $@total    </strong><a href="~/Home/Checkout" class="btn btn-success">Checkout <i class="fa fa-angle-right"></i></a></td>
             </tr>
         </table>
     </div>

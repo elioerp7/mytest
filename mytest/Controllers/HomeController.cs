@@ -263,5 +263,27 @@ namespace mytest.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("ShoppingCart");
         }
+
+
+        public async Task<IActionResult> Checkout()
+        {
+            getCartItems();
+            var UserId = _userManager.GetUserId(User);
+            var listofcarts = _context.MyShoppingCart.Where(m => m.UserId.Equals(UserId)).ToList();
+            ViewBag.userItems = listofcarts;
+            ViewBag.UserId = UserId;
+            List<Book> booksInCart = new List<Book>();
+
+            foreach (ShoppingCart s in listofcarts)
+            {
+                var temp = _context.Books.Where(b => b.ISBN.Equals(s.BookISBN)).ToList();
+                if (temp.Count() != 0)
+                {
+                    booksInCart.Add(temp.ElementAt(0));
+                }
+            }
+            ViewBag.booksInCart = booksInCart;
+            return View(await _context.MyShoppingCart.ToListAsync());
+        }
     }
 }
