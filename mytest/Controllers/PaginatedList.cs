@@ -15,6 +15,7 @@ namespace GeekTextBooks
         public static int Size = 10;
         
         
+        
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {

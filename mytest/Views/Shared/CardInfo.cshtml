@@ -1,4 +1,3 @@
-
 @{
     ViewData["Title"] = "CardInfo";
 }
@@ -9,7 +8,6 @@
         on <= small devices and 4/12 page width on >= medium devices -->
 
             <div class="checkout">
-                <h1>Checkout</h1>
                 <div class="card">
                     <div class="front side">
                         <span class="company">
@@ -19,7 +17,11 @@
                         <input type="text" placeholder="Card number" class="cc-num" />
                         <div>
                             Expires:
-                            <input type="text" placeholder="MM/YY" class="cc-exp" />
+                            <input type="text" placeholder="MM/YY" class="cc-exp" maxlength="4"/>
+                        </div>
+                        <div>
+                            CVC:
+                            <input type="text" placeholder="000" class="cc-cvc" maxlength="3" />
                         </div>
                     </div>
                     <div class="back side">
@@ -34,9 +36,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="button flip">
-                    Flip over
-                </div>
+                <br/>
+                <br/>
+
                 <p>Now, where to send it?</p>
                 <div class="addr">
                     <input type="text" placeholder="Address Line 1" />
