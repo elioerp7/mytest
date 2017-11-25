@@ -302,30 +302,40 @@ namespace mytest.Controllers
             var myuser = form["UserID"].ToString();
             var userItems = _context.MyShoppingCart.Where(m => m.UserId.Equals(myuser)).ToList();
             var booksBought = _context.Books.ToList();
-            //foreach (ShoppingCart s in userItems)
-            //{
-            //    if (s.UserId.Equals(myuser))
-            //    {
-            //        foreach (Book b in booksBought)
-            //        {
-            //            if (b.ISBN.Equals(s.BookISBN))
-            //            {
-            //                b.Quantity -= s.Quantity;
-            //                _context.Entry(b).State = EntityState.Modified;
-            //                _context.SaveChanges();
-            //            }
-            //        }
-            //        _context.MyShoppingCart.Remove(s);
-            //        _context.SaveChanges();
-            //    }
+            foreach (ShoppingCart s in userItems)
+            {
+                if (s.UserId.Equals(myuser))
+                {
+                    foreach (Book b in booksBought)
+                    {
+                        if (b.ISBN.Equals(s.BookISBN))
+                        {
+                            b.Quantity -= s.Quantity;
+                            b.Sold += s.Quantity;
+                            _context.Entry(b).State = EntityState.Modified;
+                            _context.SaveChanges();
+                        }
+                    }
+                    _context.MyShoppingCart.Remove(s);
+                    _context.SaveChanges();
+                    BookOwned bought = new BookOwned
+                    {
+                        UserId = myuser,
+                        BookISBN = s.BookISBN
 
-            //}
+                    };
+                    _context.BooksOwned.Add(bought);
+                    _context.SaveChanges();
+                }
+
+            }
             return RedirectToAction("ConfirmPurchase", "Home");
 
         }
 
         public async Task<IActionResult> ConfirmPurchase()
         {
+            getCartItems();
             return View();
         }
 
