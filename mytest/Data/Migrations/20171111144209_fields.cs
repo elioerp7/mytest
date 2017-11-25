@@ -8,7 +8,10 @@ namespace mytest.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.RenameColumn(
+                name: "BilltoAdd1",
+                table: "AspNetUsers",
+                newName: "BilltoAdd");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

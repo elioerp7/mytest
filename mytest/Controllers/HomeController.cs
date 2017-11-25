@@ -324,7 +324,7 @@ namespace mytest.Controllers
 
         }
 
-        public async Task<IActionResult> ConfirmPurchase()
+        public IActionResult ConfirmPurchase()
         {
             return View();
         }

@@ -25,5 +25,7 @@ namespace mytest.Models
         public int Quantity { get; set; }
 
         public double Total { get; set; }
+
+        public bool Checked { get; set; }
     }
 }
