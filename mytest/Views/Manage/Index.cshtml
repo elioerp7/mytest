@@ -1,4 +1,10 @@
 ﻿@model IndexViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using mytest.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Manage your account";
 }
@@ -8,7 +14,8 @@
 
 <div>
     
-    <dt>User Info:</dt>
+    <dt>User Info: @UserManager.GetUserName(User)!</dt>
+    
     <dd>
         <p>
             <h3>@ViewBag.description</h3>

@@ -5,20 +5,21 @@ namespace mytest.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
-        public string FirstName { get; set; }
+        public string RegFirstName { get; set; }
 
         [Required]
-        public string LastName { get; set; }
+        public string RegLastName { get; set; }
 
 
         [Required]
         [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        public string RegUserName { get; set; }
 
         [Required]
         [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string RegEmail { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -32,56 +33,63 @@ namespace mytest.Models.AccountViewModels
         public string ConfirmPassword { get; set; }
 
 
-        [DataType(DataType.CreditCard)]
+        
         [Display(Name = "Credit Card")]
-        public long CCnum { get; set; }
+        [DataType(DataType.CreditCard)]
+        [MaxLength(16)]
+        [MinLength(16)]
+        public string RegCCnum { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter your Bill to Address.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Bill To Address:")]
-        public string BilltoAdd { get; set; }
+        public string RegBilltoAdd { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter a city.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "City:")]
-        public string BilltoCity { get; set; }
+        public string RegBilltoCity { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter a state.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "State:")]
-        public string BilltoState { get; set; }
+        public string RegBilltoState { get; set; }
 
         [Required]
         [DataType(DataType.PostalCode)]
         [Display(Name = "ZipCode :")]
-        public int BilltoZip { get; set; }
+       [MaxLength(5)]
+        [MinLength(5)]
+        public string RegBilltoZip { get; set; }
 
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter your Bill to Address.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Ship To Address:")]
-        public string ShiptoAdd { get; set; }
+        public string RegShiptoAdd { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter a city.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "City:")]
-        public string ShiptoCity { get; set; }
+        public string RegShiptoCity { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Please enter a state.", MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "State:")]
-        public string ShiptoState { get; set; }
+        public string RegShiptoState { get; set; }
 
         [Required]
         [DataType(DataType.PostalCode)]
         [Display(Name = "ZipCode :")]
-        public int ShiptoZip { get; set; }
+        [MaxLength(5)]
+        [MinLength(5)]
+        public string RegShiptoZip { get; set; }
 
 
 

@@ -8,8 +8,8 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171111052020_New")]
-    partial class New
+    [Migration("20171125054526_new1")]
+    partial class new1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
