@@ -51,6 +51,8 @@ namespace mytest.Models.ManageViewModels
         
         [DataType(DataType.PostalCode)]
         [Display(Name = "Zip:")]
+        [MaxLength(5)]
+        [MinLength(5)]
         public string NewBilltoZip { get; set; }
 
 
@@ -77,12 +79,16 @@ namespace mytest.Models.ManageViewModels
 
         [DataType(DataType.PostalCode)]
         [Display(Name = "Zip:")]
+        [MaxLength(5)]
+        [MinLength(5)]
         public string NewShiptoZip { get; set; }
 
 
 
         [DataType(DataType.CreditCard)]
         [Display(Name = "Credit Card:")]
+        [MaxLength(16)]
+        [MinLength(16)]
         public string NewCreditCard { get; set; }
 
 

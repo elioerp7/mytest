@@ -115,19 +115,19 @@ namespace mytest.Controllers
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.UserName,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    CCnum = model.CCnum,
-                    BilltoAdd = model.BilltoAdd,
-                    BilltoCity = model.BilltoCity,
-                    BilltoState = model.BilltoState,
-                    BilltoZip = model.BilltoZip,
-                    ShiptoAdd = model.ShiptoAdd,
-                    ShiptoCity = model.ShiptoCity,
-                    ShiptoState = model.ShiptoState,
-                    ShiptoZip = model.ShiptoZip
+                    UserName = model.RegUserName,
+                    Email = model.RegEmail,
+                    FirstName = model.RegFirstName,
+                    LastName = model.RegLastName,
+                    CCnum = model.RegCCnum,
+                    BilltoAdd = model.RegBilltoAdd,
+                    BilltoCity = model.RegBilltoCity,
+                    BilltoState = model.RegBilltoState,
+                    BilltoZip = model.RegBilltoZip,
+                    ShiptoAdd = model.RegShiptoAdd,
+                    ShiptoCity = model.RegShiptoCity,
+                    ShiptoState = model.RegShiptoState,
+                    ShiptoZip = model.RegShiptoZip
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
