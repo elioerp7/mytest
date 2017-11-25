@@ -11,9 +11,11 @@ namespace mytest.Models.ManageViewModels
 {
     public class AccountInformationViewModel
     {
-        
+        [Display(Name = "First Name")]
         public string NewFirstName { get; set; }
 
+
+        [Display(Name = "Last Name")]
         public string NewLastName { get; set; }
 
 
