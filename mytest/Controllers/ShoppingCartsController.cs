@@ -124,7 +124,6 @@ namespace mytest.Controllers
                 {
                     s.Quantity = quantity;
                     s.Total = s.Quantity * book.Price;
-                    s.Checked = check;
                     _context.Entry(s).State = EntityState.Modified;
                     _context.SaveChanges();
                     return RedirectToAction("ShoppingCart", "Home");

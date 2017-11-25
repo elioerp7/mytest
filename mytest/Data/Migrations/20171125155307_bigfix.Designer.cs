@@ -8,8 +8,8 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171125064429_new2")]
-    partial class new2
+    [Migration("20171125155307_bigfix")]
+    partial class bigfix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -302,8 +302,6 @@ namespace mytest.Data.Migrations
 
                     b.Property<string>("BookISBN");
 
-                    b.Property<bool>("Checked");
-
                     b.Property<int>("Quantity");
 
                     b.Property<double>("Total");

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace mytest.Data.Migrations
 {
-    public partial class usersettings : Migration
+    public partial class bigfix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,11 +27,10 @@ namespace mytest.Data.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<string>(
                 name: "BilltoZip",
                 table: "AspNetUsers",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "Birthdate",
@@ -39,11 +38,10 @@ namespace mytest.Data.Migrations
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-            migrationBuilder.AddColumn<long>(
+            migrationBuilder.AddColumn<string>(
                 name: "CCnum",
                 table: "AspNetUsers",
-                nullable: false,
-                defaultValue: 0L);
+                nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "FirstName",
@@ -70,11 +68,10 @@ namespace mytest.Data.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<string>(
                 name: "ShiptoZip",
                 table: "AspNetUsers",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -127,32 +124,31 @@ namespace mytest.Data.Migrations
                 name: "ShiptoZip",
                 table: "AspNetUsers");
 
-            //    migrationBuilder.CreateTable(
-            //        name: "ShoppingCartItems",
-            //        columns: table => new
-            //        {
-            //            ShoppingCartItemId = table.Column<int>(nullable: false)
-            //                .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-            //            Amount = table.Column<int>(nullable: false),
-            //            BookISBN = table.Column<string>(nullable: true),
-            //            ShoppingCartId = table.Column<string>(nullable: true)
-            //        },
-            //        constraints: table =>
-            //        {
-            //            table.PrimaryKey("PK_ShoppingCartItems", x => x.ShoppingCartItemId);
-            //            table.ForeignKey(
-            //                name: "FK_ShoppingCartItems_Books_BookISBN",
-            //                column: x => x.BookISBN,
-            //                principalTable: "Books",
-            //                principalColumn: "ISBN",
-            //                onDelete: ReferentialAction.Restrict);
-            //        });
+            //migrationBuilder.CreateTable(
+            //    name: "ShoppingCartItems",
+            //    columns: table => new
+            //    {
+            //        ShoppingCartItemId = table.Column<int>(nullable: false)
+            //            .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+            //        Amount = table.Column<int>(nullable: false),
+            //        BookISBN = table.Column<string>(nullable: true),
+            //        ShoppingCartId = table.Column<string>(nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_ShoppingCartItems", x => x.ShoppingCartItemId);
+            //        table.ForeignKey(
+            //            name: "FK_ShoppingCartItems_Books_BookISBN",
+            //            column: x => x.BookISBN,
+            //            principalTable: "Books",
+            //            principalColumn: "ISBN",
+            //            onDelete: ReferentialAction.Restrict);
+            //    });
 
-            //    migrationBuilder.CreateIndex(
-            //        name: "IX_ShoppingCartItems_BookISBN",
-            //        table: "ShoppingCartItems",
-            //        column: "BookISBN");
-            //
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_ShoppingCartItems_BookISBN",
+            //    table: "ShoppingCartItems",
+            //    column: "BookISBN");
         }
     }
 }
