@@ -8,8 +8,8 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171111050550_modified")]
-    partial class modified
+    [Migration("20171125155307_bigfix")]
+    partial class bigfix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,11 +137,11 @@ namespace mytest.Data.Migrations
 
                     b.Property<string>("BilltoState");
 
-                    b.Property<int>("BilltoZip");
+                    b.Property<string>("BilltoZip");
 
                     b.Property<DateTime>("Birthdate");
 
-                    b.Property<long>("CCnum");
+                    b.Property<string>("CCnum");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -179,7 +179,7 @@ namespace mytest.Data.Migrations
 
                     b.Property<string>("ShiptoState");
 
-                    b.Property<int>("ShiptoZip");
+                    b.Property<string>("ShiptoZip");
 
                     b.Property<bool>("TwoFactorEnabled");
 

@@ -22,6 +22,9 @@
     }
     var totalRating = decimal.Parse(rating.ToString());
 }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body onload="SCRate();">
 </body>
 
@@ -49,25 +52,28 @@
         {
             foreach (var item in Model)
             {
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-5 col-md-5" style="text-align:center">
                     <div class="thumbnail hvr-curl-top-right">
                         <img id="myImg" src="@item.Image" style="height:450px; width:300px">
 
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-7 col-md-7">
                     <div class="right">
-                        <h5>
+                        
                             <font size="10">
                                 @item.Title
                             </font><br />
-                            <font size="5">
+                            <p>
+                            <font size="4">
                                 by <a href="ShowAuthor?field=@item.Author">@item.Author</a>
                             </font>
                             <font size="3">
                                 <br />Release Date: @Convert.ToDateTime(item.ReleaseDate).ToString("MMMM dd, yyyy")
+                                <br />Genre: @item.Genre<br />
                             </font>
-                        </h5>
+                            </p>
+                        
                     </div>
 
                     <div>
@@ -79,7 +85,7 @@
                         &nbsp;(@ratingCount Reviews)
 
                         <div class="right">
-                            <br /><span style="font-size:35px; color:red"><b> $@item.Price </b></span>
+                            <br /><span style="font-size:32px;"><b>Price: <span style="color:red;">$@item.Price </span></b></span>
                         </div>
 
 
@@ -100,13 +106,14 @@
                     @item.Description
                 </div>
 
-                <div id="Rb" class="tabcontent">
+                <div id="Rb" class="tabcontent" style="text-align:center;">
                     @foreach (Book b in @RelatedBooks)
                     {
 
                         <div style="width:200px; text-align:center; display:inline-block; position:relative; vertical-align:top">
                             <a href="../Home/ShowBook?field=@b.ISBN">
-                                <img src=@b.Image class="hvr-grow" style="width:180px; height:270px;"><br />
+                                <img src=@b.Image class="hvr-push" style="width:180px; height:270px;"><br />
+                            </a>
                                 <div class="caption" style="padding-top:4px;">
                                     <span class="rating" style="padding-left:1em;">
                                         @for (int i = 1; i <= 5; i++)
@@ -124,12 +131,13 @@
                                             <span class="@starClass" style="background-size:15px; background-repeat: no-repeat;"></span>
                                         }
                                     </span><br />
-                                    <span style="font-size:14px;">@b.Title</span><br />
-                                    <span style="font-size:14px;">By: @b.Author</span><br />
-                                    <span style="font-size:14px;">@Convert.ToDateTime(b.ReleaseDate).ToString("yyyy") - @b.Genre</span> <br />
-                                    <span style="color:red; font-size:14px;">$@b.Price</span>
-                                </div>
-                            </a>
+                             <a href="../Home/ShowBook?field=@b.ISBN" style="font-size:14px;">
+                                        @b.Title<br />
+                                        By: @b.Author<br />
+                                        @Convert.ToDateTime(b.ReleaseDate).ToString("yyyy") - @b.Genre<br />
+                                        $@b.Price
+                                </a>
+                            </div>
                         </div>
 
                     }
@@ -140,6 +148,8 @@
             }
         }
     </div>
+    
+    <!-- ENLARGE PICTURE -->
     <div id="myModal" class="modal">
 
         <!-- The Close Button -->
@@ -153,10 +163,11 @@
     </div>
 
 
+    <!-- COMMENTS -->
     @foreach (var c in comments)
     {
         <hr />
-        <div class="row">
+        <div class="row" style="text-align:center">
             <div class="col-md-3">
 
                 <br />
@@ -171,6 +182,7 @@
             </div>
 
         </div>
+        
         <div>
             @if (@c.UserId == null)
             {

@@ -92,6 +92,7 @@
                         <div style="width:200px; text-align:center; display:inline-block; position:relative; vertical-align:top">
                             <a href="../Home/ShowBook?field=@b.ISBN">
                                 <img src=@b.Image class="hvr-push" style="width:180px; height:270px;"><br />
+                            </a>
                                 <div class="caption" style="padding-top:4px;">
                                     <span class="rating" style="padding-left:1em;">
                                         @for (int i = 1; i <= 5; i++)
@@ -109,13 +110,15 @@
                                             <span class="@starClass" style="background-size:15px; background-repeat: no-repeat;"></span>
                                         }
                                     </span><br />
-                                    <span style="font-size:14px;">@b.Title</span><br />
-                                    <span style="font-size:14px;">@Convert.ToDateTime(b.ReleaseDate).ToString("yyyy") - @b.Genre</span> <br />
-                                    <span style="color:red; font-size:14px;">
-                                        $@b.Price
-                                    </span>
+                                    <a href="../Home/ShowBook?field=@b.ISBN">
+                                        <span style="font-size:14px;">@b.Title</span><br />
+                                        <span style="font-size:14px;">@Convert.ToDateTime(b.ReleaseDate).ToString("yyyy") - @b.Genre</span> <br />
+                                        <span style="color:red; font-size:14px;">
+                                            $@b.Price
+                                        </span>
+                                    </a>
                                 </div>
-                            </a>
+                            
                         </div>
 
                     }

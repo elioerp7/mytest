@@ -333,7 +333,7 @@ namespace mytest.Controllers
 
         }
 
-        public async Task<IActionResult> ConfirmPurchase()
+        public IActionResult ConfirmPurchase()
         {
             getCartItems();
             return View();

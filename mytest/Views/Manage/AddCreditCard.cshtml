@@ -47,29 +47,30 @@
         </div>
     </div>
 
-
-    <label asp-for="NewBilltoState" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="NewBilltoState" class="form-control" />
-        <span asp-validation-for="NewBilltoState" class="text-danger"></span>
-    </div>
-   
-
     <div class="form-group">
-        <label asp-for="NewBilltoZip" class="col-md-2 control-label"></label>
+        <label asp-for="NewBilltoState" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="NewBilltoZip" class="form-control" />
-            <span asp-validation-for="NewBilltoZip" class="text-danger"></span>
+            <input asp-for="NewBilltoState" class="form-control" />
+            <span asp-validation-for="NewBilltoState" class="text-danger"></span>
         </div>
     </div>
 
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Update</button>
-
+        <div class="form-group">
+            <label asp-for="NewBilltoZip" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NewBilltoZip" class="form-control" />
+                <span asp-validation-for="NewBilltoZip" class="text-danger"></span>
+            </div>
         </div>
-    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default">Add</button>
+
+            </div>
+        </div>
 
 
 </form>

@@ -6,6 +6,7 @@
     var booksInCart = ViewBag.booksInCart;
     Book mybook = new Book();
     double total = 0.00;
+    var check = false;
 }
 <h2>Shopping Cart</h2>
 <br>
@@ -61,7 +62,7 @@
 
                             <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
                             <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-                            <input type="checkbox" id="coding" name="interest" value="coding" checked>
+                            <input type="checkbox" id="coding" name="interest" value="Checked" onclick="$(this).parents('form').submit();")>
                             <button type="submit"><span class="glyphicon glyphicon-refresh"></span></button>
 
 
@@ -75,6 +76,7 @@
         }
     </table>
 </div>
+
 <div class="container">
     <table id="cart" class="table table-hover table-condensed">
         <tr>
@@ -91,3 +93,21 @@
     }
 
 </script>
+@*<script>
+    function onCheck() {
+        @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post, new { id = "mycheck" }))
+        {
+            <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
+            <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
+            <input type="checkbox" id="coding" name="interest" value="Checked" checked>
+        }
+        
+    }
+
+</script>
+<script type="text/javascript">
+    function sub()
+    {
+        document.getElementById('mycheck').submit();
+    }
+</script>*@
