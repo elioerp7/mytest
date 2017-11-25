@@ -24,6 +24,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Total)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Checked)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -41,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Checked)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ShoppingCartId">Edit</a> |

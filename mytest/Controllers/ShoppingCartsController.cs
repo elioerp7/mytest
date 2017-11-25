@@ -77,6 +77,8 @@ namespace mytest.Controllers
             var quantity = int.Parse(form["Quantity"]);
             var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
             var cartItems = _context.MyShoppingCart.ToList();
+            
+
             foreach (ShoppingCart s in cartItems)
             {
                 if (s.BookISBN.Equals(bookISBN) && s.UserId.Equals(userId))
@@ -115,15 +117,15 @@ namespace mytest.Controllers
             var book = _context.Books.Where(x => x.ISBN.Equals(bookISBN)).FirstOrDefault<Book>();
             var cartItems = _context.MyShoppingCart.ToList();
             bool check = false;
-            if (form["coding"].ToString() == "Checked")
+            if (form["toCheckOut"].ToString() == "Checked")
                 check = true;
-
             foreach (ShoppingCart s in cartItems)
             {
                 if (s.BookISBN.Equals(bookISBN) && s.UserId.Equals(userId))
                 {
                     s.Quantity = quantity;
                     s.Total = s.Quantity * book.Price;
+                    s.Checked = check;
                     _context.Entry(s).State = EntityState.Modified;
                     _context.SaveChanges();
                     return RedirectToAction("ShoppingCart", "Home");

@@ -302,34 +302,43 @@ namespace mytest.Controllers
             var myuser = form["UserID"].ToString();
             var userItems = _context.MyShoppingCart.Where(m => m.UserId.Equals(myuser)).ToList();
             var booksBought = _context.Books.ToList();
+            int count = 0;
             foreach (ShoppingCart s in userItems)
             {
-                if (s.UserId.Equals(myuser))
+                if (s.Checked == true)
                 {
-                    foreach (Book b in booksBought)
+                    count++;
+                    if (s.UserId.Equals(myuser))
                     {
-                        if (b.ISBN.Equals(s.BookISBN))
+                        foreach (Book b in booksBought)
                         {
-                            b.Quantity -= s.Quantity;
-                            b.Sold += s.Quantity;
-                            _context.Entry(b).State = EntityState.Modified;
-                            _context.SaveChanges();
+                            if (b.ISBN.Equals(s.BookISBN))
+                            {
+                                b.Quantity -= s.Quantity;
+                                b.Sold += s.Quantity;
+                                _context.Entry(b).State = EntityState.Modified;
+                                _context.SaveChanges();
+                            }
                         }
-                    }
-                    _context.MyShoppingCart.Remove(s);
-                    _context.SaveChanges();
-                    BookOwned bought = new BookOwned
-                    {
-                        UserId = myuser,
-                        BookISBN = s.BookISBN
+                        _context.MyShoppingCart.Remove(s);
+                        _context.SaveChanges();
+                        BookOwned bought = new BookOwned
+                        {
+                            UserId = myuser,
+                            BookISBN = s.BookISBN
 
-                    };
-                    _context.BooksOwned.Add(bought);
-                    _context.SaveChanges();
+                        };
+                        _context.BooksOwned.Add(bought);
+                        _context.SaveChanges();
+                    }
                 }
 
             }
-            return RedirectToAction("ConfirmPurchase", "Home");
+            if(count>0)
+                return RedirectToAction("ConfirmPurchase", "Home");
+            else
+                return RedirectToAction("NoItems", "Home");
+
 
         }
 
@@ -338,6 +347,10 @@ namespace mytest.Controllers
             getCartItems();
             return View();
         }
-
+        public IActionResult NoItems()
+        {
+            getCartItems();
+            return View();
+        }
     }
 }

@@ -89,14 +89,16 @@
             </thead>
             @foreach (var item in @userItems)
             {
-                total += item.Total;
-                foreach (Book b in booksInCart)
+                if (item.Checked == true)
                 {
-                    if (b.ISBN.Equals(@item.BookISBN))
+                    total += item.Total;
+                    foreach (Book b in booksInCart)
                     {
-                        mybook = b;
+                        if (b.ISBN.Equals(@item.BookISBN))
+                        {
+                            mybook = b;
+                        }
                     }
-                }
 
                 <tbody>
                     <tr>
@@ -110,7 +112,7 @@
                         }
                     </tr>
                 </tbody>
-
+                }
 
             }
         </table>

@@ -15,6 +15,7 @@
     <table id="cart" class="table table-hover table-condensed">
         <thead>
             <tr>
+                <th style="width:2%">Buy</th>
                 <th style="width:50%">Product</th>
                 <th style="width:10%">Price</th>
                 <th style="width:8%">Quantity</th>
@@ -37,6 +38,16 @@
                 <tr>
                     @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post))
                 {
+                        <td data-th="Check">
+                            @if (@item.Checked)
+                            {
+                                <input type="checkbox" name="toCheckOut" value="Checked" Checked onchange="submit()" title="Check to buy">
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="toCheckOut" value="Checked" onchange="submit()" title="Check to buy">
+                            }
+                        </td>
                         <td data-th="Product">
                             <div class="row">
                                 <a href="../Home/ShowBook?field=@mybook.ISBN">
@@ -53,7 +64,7 @@
                         </td>
                         <td data-th="Price">@mybook.Price</td>
                         <td data-th="Quantity">
-                            <input type="number" required min="1" max="@mybook.Quantity" id="Quantity" name="Quantity" class="form-control text-center" value=@item.Quantity>
+                            <input type="number" required min="1" max="@mybook.Quantity" id="Quantity" name="Quantity" class="form-control text-center" value=@item.Quantity onchange="submit()">
                             <span class="validity"></span>
                         </td>
                         <td data-th="Subtotal" class="text-center">$@(@mybook.Price * @item.Quantity)</td>
@@ -62,11 +73,12 @@
 
                             <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
                             <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-                            <input type="checkbox" id="coding" name="interest" value="Checked" onclick="$(this).parents('form').submit();")>
-                            <button type="submit"><span class="glyphicon glyphicon-refresh"></span></button>
+
+                                
+                            <button type="submit" title="Update Cart"><span class="glyphicon glyphicon-refresh"></span></button>
 
 
-                            <button type="button"><a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a></button>
+                            <button type="button" title="Delete Item"><a asp-action="Delete" asp-route-id="@item.ShoppingCartId" class="glyphicon glyphicon-trash"></a></button>
                         </td>
                     }
                 </tr>
@@ -93,21 +105,3 @@
     }
 
 </script>
-@*<script>
-    function onCheck() {
-        @using (Html.BeginForm("UpdateQuantity", "ShoppingCarts", FormMethod.Post, new { id = "mycheck" }))
-        {
-            <input type="hidden" name="BookISBN" value="@mybook.ISBN" />
-            <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
-            <input type="checkbox" id="coding" name="interest" value="Checked" checked>
-        }
-        
-    }
-
-</script>
-<script type="text/javascript">
-    function sub()
-    {
-        document.getElementById('mycheck').submit();
-    }
-</script>*@
