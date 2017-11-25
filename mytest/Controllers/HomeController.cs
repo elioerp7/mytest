@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -289,5 +290,44 @@ namespace mytest.Controllers
             ViewBag.booksInCart = booksInCart;
             return View(await _context.MyShoppingCart.ToListAsync());
         }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult AfterPurchase(IFormCollection form)
+        {
+            
+            var myuser = form["UserID"].ToString();
+            var userItems = _context.MyShoppingCart.Where(m => m.UserId.Equals(myuser)).ToList();
+            var booksBought = _context.Books.ToList();
+            //foreach (ShoppingCart s in userItems)
+            //{
+            //    if (s.UserId.Equals(myuser))
+            //    {
+            //        foreach (Book b in booksBought)
+            //        {
+            //            if (b.ISBN.Equals(s.BookISBN))
+            //            {
+            //                b.Quantity -= s.Quantity;
+            //                _context.Entry(b).State = EntityState.Modified;
+            //                _context.SaveChanges();
+            //            }
+            //        }
+            //        _context.MyShoppingCart.Remove(s);
+            //        _context.SaveChanges();
+            //    }
+
+            //}
+            return RedirectToAction("ConfirmPurchase", "Home");
+
+        }
+
+        public async Task<IActionResult> ConfirmPurchase()
+        {
+            return View();
+        }
+
     }
 }
