@@ -8,9 +8,10 @@ using mytest.Data;
 namespace mytest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171125072656_checked")]
+    partial class @checked
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -136,11 +137,11 @@ namespace mytest.Data.Migrations
 
                     b.Property<string>("BilltoState");
 
-                    b.Property<string>("BilltoZip");
+                    b.Property<int>("BilltoZip");
 
                     b.Property<DateTime>("Birthdate");
 
-                    b.Property<string>("CCnum");
+                    b.Property<long>("CCnum");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -178,7 +179,7 @@ namespace mytest.Data.Migrations
 
                     b.Property<string>("ShiptoState");
 
-                    b.Property<string>("ShiptoZip");
+                    b.Property<int>("ShiptoZip");
 
                     b.Property<bool>("TwoFactorEnabled");
 
